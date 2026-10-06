@@ -1,0 +1,25 @@
+# Model manifest for the MiniMax-H3 INT8 serverless stack (~100GB total).
+# Format (tab-separated): <models subdir>	<filename>	<URL>
+# Consumed by populate-volume.sh — missing files are downloaded to the
+# attached network volume at worker boot (VOLUME_AUTOPOPULATE=false to skip).
+#
+# ── DiT — Comfy-Org INT8 ConvRot ──
+diffusion_models	minimax_h3_fl2va_pruned_int8_convrot.safetensors	https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors
+diffusion_models	minimax_h3_ref2va_pruned_int8_convrot.safetensors	https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors
+# ── 10Eros-Max Hybrid Beta5 INT8 (non-turbo — turbo via LoRA) ──
+diffusion_models	10Eros_Max_h3_hybrid_beta5_int8.safetensors	https://huggingface.co/TenStrip/10Eros-Max/resolve/main/10Eros_Max_h3_hybrid_beta5_int8.safetensors
+# ── Text encoder: Qwen3-VL-32B Ultra Heretic NVFP4 ──
+text_encoders	qwen3vl_32b_heretic_minimax_h3_nvfp4.safetensors	https://huggingface.co/Momoking/Qwen3-VL-32B-Heretic-MiniMax-H3-NVFP4/resolve/main/qwen3vl_32b_heretic_minimax_h3_nvfp4.safetensors
+# ── lightx2v Turbo LoRAs 8-step 768p ──
+loras	minimax_h3_fl2v_turbo_8step_v1.0_768p_comfyui_bf16.safetensors	https://huggingface.co/lightx2v/Minimax-h3-Turbo/resolve/main/minimax_h3_fl2v_turbo_8step_v1.0_768p_comfyui_bf16.safetensors
+loras	minimax_h3_ref2v_turbo_8step_v1.0_768p_comfyui_bf16.safetensors	https://huggingface.co/lightx2v/Minimax-h3-Turbo/resolve/main/minimax_h3_ref2v_turbo_8step_v1.0_768p_comfyui_bf16.safetensors
+# ── Kijai reference LoRA rank 256 — required for R2VA Native preset ──
+loras	minimax_h3_ref_lora_rank_256_bf16.safetensors	https://huggingface.co/Kijai/MiniMax-H3-experimental/resolve/main/loras/minimax_h3_ref_lora_rank_256_bf16.safetensors
+# ── TenStrip fusion turbo LoRA — turbo for the 10Eros non-turbo DiT ──
+loras	lightx2v_hybrid-4to8step-full-fusion_Turbo_pruned.safetensors	https://huggingface.co/TenStrip/MinimaxH3-Turbo_Shenanigans/resolve/main/lightx2v_hybrid-4to8step-full-fusion_Turbo_pruned.safetensors
+# ── VAEs ──
+vae	minimax_h3_video_vae_fp16.safetensors	https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_fp16.safetensors
+vae	minimax_h3_audio_vae_fp32.safetensors	https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors
+# ── QwenVL-Mod enhancer LLM: Defiant-Fable NEO-MAX Q6_K + mmproj ──
+LLM/GGUF	Qwen3.5-9B-The-Defiant-Fable-Uncnr-Heretic-NEO-MAX-Q6_K.gguf	https://huggingface.co/DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF/resolve/main/Qwen3.5-9B-The-Defiant-Fable-Uncnr-Heretic-NEO-MAX-Q6_K.gguf
+LLM/GGUF	mmproj-BF16.gguf	https://huggingface.co/DavidAU/Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX-MTP-GGUF/resolve/main/mmproj-BF16.gguf

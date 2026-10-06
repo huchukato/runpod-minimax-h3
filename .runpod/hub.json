@@ -1,0 +1,60 @@
+{
+  "title": "MiniMax H3 Turbo — Video Generation",
+  "description": "ComfyUI serverless worker for MiniMax H3: text/image/first-last-frame/reference-to-video with audio, lightx2v 8-step turbo LoRAs, TensorRT RIFE interpolation + upscaling, wildcard prompts and a Qwen3-VL enhancer. Models auto-download to your network volume on first boot.",
+  "type": "serverless",
+  "category": "video",
+  "iconUrl": "https://raw.githubusercontent.com/huchukato/runpod-minimax-h3/main/media/icon.png",
+  "config": {
+    "runsOn": "GPU",
+    "endpointType": "LB",
+    "containerDiskInGb": 30,
+    "gpuCount": 1,
+    "gpuIds": "BLACKWELL_96",
+    "allowedCudaVersions": ["13.0", "13.1", "13.2"],
+    "env": [
+      {
+        "key": "VOLUME_AUTOPOPULATE",
+        "input": {
+          "type": "boolean",
+          "name": "Auto-download models",
+          "description": "Download missing models to the attached network volume at worker boot. Requires a ≥160GB network volume attached to the endpoint — strongly recommended.",
+          "default": true,
+          "trueValue": "true",
+          "falseValue": "false"
+        }
+      },
+      {
+        "key": "HF_TOKEN",
+        "input": {
+          "name": "Hugging Face token",
+          "type": "string",
+          "description": "Optional — only needed if you edit models-manifest.txt to pull from gated Hugging Face repos. All bundled models are public.",
+          "default": "",
+          "advanced": true
+        }
+      },
+      {
+        "key": "JOB_TIMEOUT_S",
+        "input": {
+          "name": "Job timeout (seconds)",
+          "type": "number",
+          "description": "Max seconds a single generation job may run before the worker aborts it.",
+          "min": 60,
+          "max": 7200,
+          "default": 1800,
+          "advanced": true
+        }
+      },
+      {
+        "key": "COMFYUI_EXTRA_ARGS",
+        "input": {
+          "name": "ComfyUI extra args",
+          "type": "string",
+          "description": "Extra launch flags for ComfyUI. Leave empty: --fast / --use-sage-attention / --async-offload corrupt int8-convrot stacks.",
+          "default": "",
+          "advanced": true
+        }
+      }
+    ]
+  }
+}
