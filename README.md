@@ -60,7 +60,6 @@ Built for [ForgeHub](https://github.com/huchukato/ForgeHub), a desktop + self-ho
 ## Companion stack
 
 - 🖼 Image sibling: [huchukato/runpod-qwen21](https://github.com/huchukato/runpod-qwen21) (Qwen Image 2.1 T2I/Edit + Pony)
-- 🖥 Frontend: [ForgeHub](https://github.com/huchukato/ForgeHub)
 
 ## Get the app
 
