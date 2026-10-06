@@ -61,3 +61,9 @@ Built for [ForgeHub](https://github.com/huchukato/ForgeHub), a desktop + self-ho
 
 - 🖼 Image sibling: [huchukato/runpod-qwen21](https://github.com/huchukato/runpod-qwen21) (Qwen Image 2.1 T2I/Edit + Pony)
 - 🖥 Frontend: [ForgeHub](https://github.com/huchukato/ForgeHub)
+
+## Get the app
+
+Deployed the endpoint? Drive it with ForgeHub — workflows, wildcard browsing, job queue and outputs included. Paste your API key and it detects the endpoint by itself.
+
+[![Download ForgeHub](media/forgehub-release.jpg)](https://github.com/huchukato/ForgeHub/releases/latest)
