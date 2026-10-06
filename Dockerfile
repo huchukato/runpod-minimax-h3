@@ -34,7 +34,12 @@ RUN dl() { \
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Requirements + runpod serverless SDK
+# libgl1/libglib2.0-0: opencv-python (VideoHelperSuite) fails to import without
+# them → the whole pack never registers → missing_node_type on VHS_* nodes.
 # ──────────────────────────────────────────────────────────────────────────────
+RUN apt-get update && apt-get install -y --no-install-recommends libgl1 libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN bash -c 'cd /opt/comfyui-baked/custom_nodes && for node_dir in */; do \
         if [ -f "$node_dir/requirements.txt" ]; then \
             echo "Installing requirements for $node_dir..." && \
