@@ -8,6 +8,15 @@ A production-ready [Runpod Serverless](https://docs.runpod.io/serverless/overvie
 
 Built for [ForgeHub](https://github.com/huchukato/ForgeHub), a desktop + self-hosted frontend that drives these workflows — but the endpoint speaks plain Runpod API, so anything can call it.
 
+## Deploy
+
+1. **Storage first**: create a [network volume](https://console.runpod.io/storage) (≥160GB) in a datacenter with 96GB Pro GPUs — e.g. `US-NE-1`. Name it whatever you like.
+2. Click **Deploy** on this listing — it creates a Serverless endpoint.
+3. Open the endpoint → **Edit** → set **Max workers ≥ 1** (0 means it never scales) and under **Advanced → Network volumes** select your volume. Save — workers restart and auto-download ~100GB of models on first boot (cold start is long, once).
+4. Done — call it via the Runpod API or ForgeHub below.
+
+> No volume attached? Workers boot but every job fails on missing models — the volume is where the models live.
+
 ## Get the app
 
 Deployed the endpoint? Drive it with ForgeHub — workflows, wildcard browsing, job queue and outputs included. Paste your API key and it detects the endpoint by itself.
