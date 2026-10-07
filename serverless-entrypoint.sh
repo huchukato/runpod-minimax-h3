@@ -28,6 +28,9 @@ runpod_volume:
   LLM: LLM
   clip: clip
   clip_vision: clip_vision
+  vae_approx: vae_approx
+  ultralytics: ultralytics
+  sams: sams
 YAML
 
 # Auto-populate the network volume on first boot (models-manifest.txt).

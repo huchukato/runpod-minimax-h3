@@ -22,6 +22,7 @@ Deployed the endpoint? Drive it with ForgeHub — workflows, wildcard browsing, 
 | `MiniMaxH3-Turbo-I2VA.json` | Image → video + audio |
 | `MiniMaxH3-Turbo-FL2VA.json` | First/last frame → video + audio |
 | `MiniMaxH3-Turbo-R2VA.json` | Reference images → video + audio |
+| `MiniMaxH3-Singularity-R2VA.json` | Singularity fusion — up to 3 ref images + ref video → video + audio |
 
 ## Requirements
 
@@ -31,10 +32,12 @@ Deployed the endpoint? Drive it with ForgeHub — workflows, wildcard browsing, 
 
 ## Model stack (auto-provisioned)
 
-- DiTs: Comfy-Org `minimax_h3_fl2va` / `ref2va` pruned INT8, `10Eros_Max_h3_hybrid_beta5` INT8
+- DiTs: Comfy-Org `minimax_h3_fl2va` INT8, `Minimax-h3_Singularity_ref2va` INT8 (T2V/I2V/R2V/V2V in one unet), `10Eros_Max_h3_hybrid_beta5` INT8
 - Text encoder: `qwen3vl_32b_heretic_minimax_h3_nvfp4` (Momoking)
-- Turbo LoRAs: lightx2v fl2v/ref2v 8-step, Kijai ref rank-256, TenStrip fusion turbo
-- VAEs: MiniMax H3 video fp16 + audio fp32
+- Turbo LoRAs: lightx2v fl2v/ref2v 8-step, TenStrip fusion turbo
+- Style LoRAs (Singularity `lora` param): `h3-realism-people` (fal), `h3_character_swap` (akatz)
+- VAEs: MiniMax H3 video fp16 + audio fp32, `taeh3` preview VAE
+- Face detailer models: `face_yolov8m` + `sam_vit_b` (Easy-Use/Impact)
 - Enhancer LLM: Qwen3.5-9B Defiant-Fable NEO-MAX Q6_K GGUF + mmproj
 
 ## Job input
@@ -54,14 +57,15 @@ Deployed the endpoint? Drive it with ForgeHub — workflows, wildcard browsing, 
 }
 ```
 
-- `config` presets: `native` / `native_turbo` / `r2va_native` / `r2va_native_turbo` / `10eros` / `10eros_turbo` — they swap the DiT needle, turbo LoRA, steps/sampler/scheduler and shift values
-- `video` — URL or base64, fills `VHS_LoadVideo` (R2VA)
+- `config` presets: `native` / `native_turbo` / `r2va_singularity` / `r2va_singularity_turbo` / `10eros` / `10eros_turbo` — they swap the DiT needle, turbo LoRA, steps/sampler/scheduler and shift values
+- `lora` — style LoRA on the Singularity recipe: `none` (default) / `realism` / `char_swap`
+- `images` — up to 3 reference images (1 image ≈ I2V behavior); `video` — URL or base64, fills the reference-video loader (R2VA)
 - `upscale` / `rife` — toggle the TensorRT post-processing chain
 - `"action": "health"` — returns `{"status": "ok", "workflows": […], "volume_mounted": bool}` without running a generation
 
 ## Custom nodes baked in
 
-`ComfyUI-VideoHelperSuite` · `ComfyUI-Easy-Use` · `ComfyUI-QwenVL-Mod` · `ComfyUI-RIFE-TensorRT-Auto` · `ComfyUI-Upscaler-TensorRT-Auto` · `ComfyUI-TagForge` · `ComfyUI-PerfectVideoResolution` · `ComfyUI-Pixaroma` · `ComfyUI-KJNodes`
+`ComfyUI-VideoHelperSuite` · `ComfyUI-Easy-Use` · `ComfyUI-Impact-Pack` · `ComfyUI-Impact-Subpack` · `ComfyUI-QwenVL-Mod` · `ComfyUI-RIFE-TensorRT-Auto` · `ComfyUI-Upscaler-TensorRT-Auto` · `ComfyUI-TagForge` · `ComfyUI-PerfectVideoResolution` · `ComfyUI-Pixaroma` · `ComfyUI-KJNodes`
 
 ## Companion stack
 

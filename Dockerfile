@@ -29,7 +29,9 @@ RUN dl() { \
     dl huchukato ComfyUI-TagForge main ComfyUI-TagForge && \
     dl huchukato ComfyUI-PerfectVideoResolution master ComfyUI-PerfectVideoResolution && \
     dl pixaroma ComfyUI-Pixaroma main ComfyUI-Pixaroma && \
-    dl kijai ComfyUI-KJNodes main ComfyUI-KJNodes
+    dl kijai ComfyUI-KJNodes main ComfyUI-KJNodes && \
+    dl ltdrdata ComfyUI-Impact-Pack Main ComfyUI-Impact-Pack && \
+    dl ltdrdata ComfyUI-Impact-Subpack main ComfyUI-Impact-Subpack
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -54,7 +56,7 @@ RUN bash -c 'cd /opt/comfyui-baked/custom_nodes && for node_dir in */; do \
 # Model dirs (empty — real models come from the network volume via
 # extra_model_paths.yaml written by the entrypoint)
 # ──────────────────────────────────────────────────────────────────────────────
-RUN mkdir -p /opt/comfyui-baked/models/{vae,diffusion_models,unet,text_encoders,clip_projections,loras,checkpoints,LLM,clip,clip_vision}
+RUN mkdir -p /opt/comfyui-baked/models/{vae,vae_approx,diffusion_models,unet,text_encoders,clip_projections,loras,checkpoints,LLM,clip,clip_vision,ultralytics/bbox,sams}
 
 ENV HF_TOKEN=""
 
@@ -67,7 +69,7 @@ RUN WILDCARD_DIR="/opt/comfyui-baked/custom_nodes/ComfyUI-TagForge/wildcards" &&
               pmp/blwjob.yaml pmp/prmpt.yaml pmp/qwen21.yaml \
               pmp/prmpt/acc.yaml pmp/prmpt/char.yaml pmp/prmpt/clths.yaml pmp/prmpt/exprss.yaml \
               pmp/prmpt/hair.yaml pmp/prmpt/imgcmp.yaml pmp/prmpt/lctns.yaml pmp/prmpt/light.yaml pmp/prmpt/lens.yaml \
-              pmp/prmpt/pose.yaml pmp/prmpt/styles.yaml; do \
+              pmp/prmpt/pose.yaml pmp/prmpt/styles.yaml vid/act.yaml; do \
         mkdir -p "$WILDCARD_DIR/$(dirname "$wf")" && \
         wget -q --tries=3 --timeout=30 "$WILDCARD_BASE/$wf" -O "$WILDCARD_DIR/$wf" || \
         echo "⚠️ wildcard $wf download failed"; \

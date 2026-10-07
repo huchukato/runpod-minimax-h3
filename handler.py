@@ -41,8 +41,8 @@ JOB_TIMEOUT_S = int(os.environ.get("JOB_TIMEOUT_S", "1800"))
 MINIMAX_CONFIGS = {
     "native":            {"unet": "fl2va",  "steps": 20, "sampler": "res_multistep", "scheduler": "simple", "shift_video": 12.0, "shift_audio": 3.0, "lora": None, "tau": None},
     "native_turbo":      {"unet": "fl2va",  "steps": 8,  "sampler": "euler",         "scheduler": "simple", "shift_video": 6.0,  "shift_audio": 3.0, "lora": "fl2v_turbo",  "tau": 1.3},
-    "r2va_native":       {"unet": "ref2va", "steps": 20, "sampler": "res_multistep", "scheduler": "simple", "shift_video": 12.0, "shift_audio": 3.0, "lora": "ref_lora", "tau": None},
-    "r2va_native_turbo": {"unet": "ref2va", "steps": 8,  "sampler": "euler",         "scheduler": "simple", "shift_video": 6.0,  "shift_audio": 3.0, "lora": "ref2v_turbo", "tau": 1.3},
+    "r2va_singularity":       {"unet": "Singularity", "steps": 20, "sampler": "res_multistep", "scheduler": "simple", "shift_video": 4.0,  "shift_audio": 3.0, "lora": None, "tau": None},
+    "r2va_singularity_turbo": {"unet": "Singularity", "steps": 8,  "sampler": "er_sde",        "scheduler": "beta",   "shift_video": 6.0,  "shift_audio": 3.0, "lora": "ref2v_turbo", "tau": 1.3},
     "10eros":            {"unet": "10eros", "steps": 20, "sampler": "res_multistep", "scheduler": "simple", "shift_video": 12.0, "shift_audio": 3.0, "lora": None, "tau": None},
     "10eros_turbo":      {"unet": "10eros", "steps": 8,  "sampler": "euler",         "scheduler": "simple", "shift_video": 6.0,  "shift_audio": 3.0, "lora": "fusion_turbo", "tau": 1.3},
 }
@@ -201,18 +201,36 @@ def _patch(prompt, job):
                 inp["length"] = sec * 24
             elif "value" in inp and ct.startswith("Primitive"):
                 inp["value"] = sec
-        if cfg is not None and "lora_name" in inp:
-            if cfg["lora"]:
-                found = _find_file("loras", cfg["lora"])
-                if found:
-                    inp["lora_name"] = found
+        if "lora_name" in inp:
+            cur_lora = str(inp.get("lora_name", "")).lower()
+            if "realism" in cur_lora or "character_swap" in cur_lora:
+                # Style LoRA slot (Singularity recipe): job.lora =
+                # none | realism | char_swap
+                sel = job.get("lora") or "none"
+                if sel != "none":
+                    needle = {"realism": "realism", "char_swap": "character_swap"}.get(sel, sel)
+                    found = _find_file("loras", needle)
+                    if found:
+                        inp["lora_name"] = found
+                        for skey in ("strength_model", "strength_clip"):
+                            if skey in inp:
+                                inp[skey] = 1.0
+                else:
                     for skey in ("strength_model", "strength_clip"):
                         if skey in inp:
-                            inp[skey] = 1.0
-            else:
-                for skey in ("strength_model", "strength_clip"):
-                    if skey in inp:
-                        inp[skey] = 0.0
+                            inp[skey] = 0.0
+            elif cfg is not None:
+                if cfg["lora"]:
+                    found = _find_file("loras", cfg["lora"])
+                    if found:
+                        inp["lora_name"] = found
+                        for skey in ("strength_model", "strength_clip"):
+                            if skey in inp:
+                                inp[skey] = 1.0
+                else:
+                    for skey in ("strength_model", "strength_clip"):
+                        if skey in inp:
+                            inp[skey] = 0.0
         elif cfg is not None and "unet_name" in inp:  # MiniMax H3 generator/enhancer node
             needle = cfg["unet"]
             if needle.lower() not in str(inp.get("unet_name", "")).lower():
@@ -232,6 +250,11 @@ def _patch(prompt, job):
     dead = [nid for nid, n in prompt.items()
             if "LoadImage" in n.get("class_type", "")
             and n.get("inputs", {}).get("image") not in uploaded]
+    # Same for reference video loaders left on their template value when the
+    # job carries no video (R2VA recipes have an optional ref_videos input).
+    dead += [nid for nid, n in prompt.items()
+             if "LoadVideo" in n.get("class_type", "")
+             and n.get("inputs", {}).get("video") != video_name]
     if dead:
         for nid in dead:
             del prompt[nid]
