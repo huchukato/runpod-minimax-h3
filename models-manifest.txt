@@ -21,8 +21,8 @@ loras	h3-realism-people-t2v-i2v-r2v.safetensors	https://huggingface.co/fal/MiniM
 # ── TenStrip fusion turbo LoRA — turbo for the 10Eros non-turbo DiT ──
 loras	lightx2v_hybrid-4to8step-full-fusion_Turbo_pruned.safetensors	https://huggingface.co/TenStrip/MinimaxH3-Turbo_Shenanigans/resolve/main/lightx2v_hybrid-4to8step-full-fusion_Turbo_pruned.safetensors
 # ── Face Detailer (Easy-Use → Impact) detector models ──
-ultralytics/bbox	face_yolov8m.pt	https://huggingface.co/Bingsu/adetailer/resolve/main/face_yolov8m.pt
-sams	sam_vit_b_01ec64.pth	https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth
+ultralytics/bbox	face_yolov8m.pt	https://huggingface.co/huchukato/garage/resolve/main/ultralytics/bbox/face_yolov8m.pt
+sams	sam_vit_b_01ec64.pth	https://huggingface.co/huchukato/garage/resolve/main/sams/sam_vit_b_01ec64.pth
 # ── VAEs ──
 vae	minimax_h3_video_vae_fp16.safetensors	https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_fp16.safetensors
 vae	minimax_h3_audio_vae_fp32.safetensors	https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors
@@ -43,3 +43,6 @@ loras	elusarcas-qwen2-1-detailer-v1.safetensors	https://huggingface.co/reverente
 # ══ Pony / Illustrious checkpoints (qwen21 endpoint) ══
 checkpoints	ilustmix_v111.safetensors	https://huggingface.co/huchukato/garage/resolve/main/checkpoints/illustrious/ilustmix_v111.safetensors
 checkpoints	pimpmypony_pmpInCaseEnhanced.safetensors	https://huggingface.co/huchukato/garage/resolve/main/checkpoints/pmp/pimpmypony_pmpInCaseEnhanced.safetensors
+# ── Prebuilt TensorRT engines (RTX PRO 6000, TRT 10.15.1.29) — skips compile at first use ──
+tensorrt/rife	rife425_ensemble_False_scale_1_sim_fp16_large_1x3x720x720_1x3x1440x1440_1x3x1920x1920_10.15.1.29.trt	https://huggingface.co/huchukato/garage/resolve/main/tensorrt/rife/rife425_ensemble_False_scale_1_sim_fp16_large_1x3x720x720_1x3x1440x1440_1x3x1920x1920_10.15.1.29.trt
+tensorrt/upscaler	2xLexicaRRDBNet_fp16_1x3x256x256_2x3x512x512_2x3x2048x2048_10.15.1.29.trt	https://huggingface.co/huchukato/garage/resolve/main/tensorrt/upscaler/2xLexicaRRDBNet_fp16_1x3x256x256_2x3x512x512_2x3x2048x2048_10.15.1.29.trt
