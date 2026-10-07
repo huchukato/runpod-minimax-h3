@@ -1,4 +1,4 @@
-![MiniMax H3 Turbo — Video Generation](https://raw.githubusercontent.com/huchukato/runpod-minimax-h3/main/media/banner.png)
+![MiniMax H3 Singularity — one model to rule them all](https://raw.githubusercontent.com/huchukato/runpod-minimax-h3/main/media/banner-singularity.jpg)
 
 # MiniMax H3 Turbo — ComfyUI Serverless Worker
 
