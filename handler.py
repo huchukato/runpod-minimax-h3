@@ -42,7 +42,7 @@ MINIMAX_CONFIGS = {
     "native":            {"unet": "fl2va",  "steps": 20, "sampler": "res_multistep", "scheduler": "simple", "shift_video": 12.0, "shift_audio": 3.0, "lora": None, "tau": None},
     "native_turbo":      {"unet": "fl2va",  "steps": 8,  "sampler": "euler",         "scheduler": "simple", "shift_video": 6.0,  "shift_audio": 3.0, "lora": "fl2v_turbo",  "tau": 1.3},
     "r2va_singularity":       {"unet": "Singularity", "steps": 20, "sampler": "res_multistep", "scheduler": "simple", "shift_video": 4.0,  "shift_audio": 3.0, "lora": None, "tau": None},
-    "r2va_singularity_turbo": {"unet": "Singularity", "steps": 8,  "sampler": "er_sde",        "scheduler": "beta",   "shift_video": 6.0,  "shift_audio": 3.0, "lora": "ref2v_turbo", "tau": 1.3},
+    "r2va_singularity_turbo": {"unet": "Singularity", "steps": 8,  "sampler": "euler",         "scheduler": "simple", "shift_video": 6.0,  "shift_audio": 3.0, "lora": "ref2v_turbo", "tau": 1.3},
     "10eros":            {"unet": "10eros", "steps": 20, "sampler": "res_multistep", "scheduler": "simple", "shift_video": 12.0, "shift_audio": 3.0, "lora": None, "tau": None},
     "10eros_turbo":      {"unet": "10eros", "steps": 8,  "sampler": "euler",         "scheduler": "simple", "shift_video": 6.0,  "shift_audio": 3.0, "lora": "fusion_turbo", "tau": 1.3},
 }
@@ -244,6 +244,20 @@ def _patch(prompt, job):
                     inp[wkey] = cfg[ckey]
             if cfg.get("tau") and "tau" in inp:
                 inp["tau"] = cfg["tau"]
+        if cfg is not None:
+            # Sampler/step/shift values live on dedicated nodes, not on the
+            # unet loader — patch them by class_type or the preset would only
+            # swap weights/LoRA while the template settings silently win.
+            if ct == "KSamplerSelect" and "sampler_name" in inp:
+                inp["sampler_name"] = cfg["sampler"]
+            elif ct == "BasicScheduler":
+                for wkey in ("steps", "scheduler"):
+                    if wkey in inp:
+                        inp[wkey] = cfg[wkey]
+            elif ct == "MiniMaxH3SigmaShift":
+                for wkey in ("shift_video", "shift_audio"):
+                    if wkey in inp:
+                        inp[wkey] = cfg[wkey]
     # LoadImage nodes left on the template filename (fewer uploads than loaders —
     # e.g. single-image edits with an optional image2) would fail validation;
     # drop them and unlink their consumers instead.
@@ -505,6 +519,7 @@ async def handler(job):
     comfy_log = Path("/workspace/comfy.log")
     log_mark = comfy_log.stat().st_size if comfy_log.is_file() else 0
     history = await _queue_and_wait(prompt)
+    print(f"[handler] comfy execution took {time.time() - started:.1f}s", flush=True)
     outputs, texts = await asyncio.to_thread(_collect_outputs, history, prompt)
     try:  # surface ComfyUI warnings/errors from this job in the worker log
         with open(comfy_log, "rb") as f:
