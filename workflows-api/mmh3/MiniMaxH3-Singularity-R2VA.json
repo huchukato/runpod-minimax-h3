@@ -110,32 +110,6 @@
       "title": "Label Pixaroma"
     }
   },
-  "268": {
-    "inputs": {
-      "max_resolution": 1024,
-      "jpeg_quality": 80,
-      "suppress_default_preview": true,
-      "preview_frames": 10,
-      "preview_fps": 12,
-      "tiny_vae": "taeh3.safetensors",
-      "model": [
-        "105:170",
-        0
-      ],
-      "vae": [
-        "105:11",
-        0
-      ],
-      "audio_vae": [
-        "105:24",
-        0
-      ]
-    },
-    "class_type": "ModelPreviewOverrideKJ",
-    "_meta": {
-      "title": "Model Preview Override"
-    }
-  },
   "270": {
     "inputs": {
       "label_json": "{\"text\":\"SINGULARITY\",\"fontSize\":44,\"fontFamily\":\"Impact\",\"fontColor\":\"#4ade80\",\"textAlign\":\"left\",\"backgroundColor\":\"transparent\",\"padding\":10,\"borderRadius\":9,\"opacity\":1,\"fontWeight\":\"bold\",\"lineHeight\":1}"
@@ -245,7 +219,7 @@
   "105:16": {
     "inputs": {
       "model": [
-        "268",
+        "105:170",
         0
       ],
       "conditioning": [
@@ -292,7 +266,7 @@
       "steps": 20,
       "denoise": 1,
       "model": [
-        "268",
+        "105:170",
         0
       ]
     },

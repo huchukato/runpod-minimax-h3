@@ -118,32 +118,6 @@
       "title": "Output"
     }
   },
-  "267": {
-    "inputs": {
-      "max_resolution": 1024,
-      "jpeg_quality": 80,
-      "suppress_default_preview": true,
-      "preview_frames": 10,
-      "preview_fps": 12,
-      "tiny_vae": "taeh3.safetensors",
-      "model": [
-        "105:170",
-        0
-      ],
-      "vae": [
-        "105:11",
-        0
-      ],
-      "audio_vae": [
-        "105:24",
-        0
-      ]
-    },
-    "class_type": "ModelPreviewOverrideKJ",
-    "_meta": {
-      "title": "Model Preview Override"
-    }
-  },
   "105:10": {
     "inputs": {
       "samples": [
@@ -220,7 +194,7 @@
   "105:16": {
     "inputs": {
       "model": [
-        "267",
+        "105:170",
         0
       ],
       "conditioning": [
@@ -267,7 +241,7 @@
       "steps": 20,
       "denoise": 1,
       "model": [
-        "267",
+        "105:170",
         0
       ]
     },

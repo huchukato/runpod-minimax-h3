@@ -161,7 +161,8 @@ def _patch(prompt, job):
         return Path(hits[0]).name if hits else None
 
     img_idx = 0
-    for node in prompt.values():
+    drop_lora = None
+    for nid, node in prompt.items():
         ct = node.get("class_type", "")
         inp = node.get("inputs", {})
 
@@ -205,20 +206,20 @@ def _patch(prompt, job):
             cur_lora = str(inp.get("lora_name", "")).lower()
             if "realism" in cur_lora or "character_swap" in cur_lora:
                 # Style LoRA slot (Singularity recipe): job.lora =
-                # none | realism | char_swap
+                # none | realism | char_swap. Disabled/missing → drop the
+                # node entirely below (ComfyUI validates lora_name even at
+                # strength 0), so mark it for removal.
                 sel = job.get("lora") or "none"
+                drop_lora = nid
                 if sel != "none":
                     needle = {"realism": "realism", "char_swap": "character_swap"}.get(sel, sel)
                     found = _find_file("loras", needle)
-                    if found:
-                        inp["lora_name"] = found
-                        for skey in ("strength_model", "strength_clip"):
-                            if skey in inp:
-                                inp[skey] = 1.0
-                else:
+                    if not found:
+                        raise RuntimeError(f"Style LoRA '{sel}' not found on the volume")
+                    inp["lora_name"] = found
                     for skey in ("strength_model", "strength_clip"):
                         if skey in inp:
-                            inp[skey] = 0.0
+                            inp[skey] = 1.0
             elif cfg is not None:
                 if cfg["lora"]:
                     found = _find_file("loras", cfg["lora"])
@@ -262,6 +263,15 @@ def _patch(prompt, job):
             for k in [k for k, v in n.get("inputs", {}).items()
                       if isinstance(v, list) and v and v[0] in dead]:
                 del n["inputs"][k]
+    if drop_lora is not None:
+        # Rewire the dropped style LoRA's consumers to its model source.
+        src = prompt[drop_lora].get("inputs", {}).get("model")
+        del prompt[drop_lora]
+        if isinstance(src, list):
+            for n in prompt.values():
+                for k, v in n.get("inputs", {}).items():
+                    if isinstance(v, list) and v and v[0] == drop_lora:
+                        n["inputs"][k] = src
     # Post-processing toggles: the graph chain is  save.images <- rife.frames
     # <- upscale.images <- VAEDecode.  upscale=false rewires rife.frames to the
     # decoder output; rife=false rewires save.images to rife's own source.
