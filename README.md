@@ -1,4 +1,4 @@
-![MiniMax H3 Turbo — Video Generation](media/banner.png)
+![MiniMax H3 Turbo — Video Generation](https://raw.githubusercontent.com/huchukato/runpod-minimax-h3/main/media/banner.png)
 
 # MiniMax H3 Turbo — ComfyUI Serverless Worker
 
@@ -12,7 +12,7 @@ Built for [ForgeHub](https://github.com/huchukato/ForgeHub), a desktop + self-ho
 
 Deployed the endpoint? Drive it with ForgeHub — workflows, wildcard browsing, job queue and outputs included. Paste your API key and it detects the endpoint by itself.
 
-[![Download ForgeHub](media/forgehub-release.jpeg)](https://github.com/huchukato/ForgeHub/releases/latest)
+[![Download ForgeHub](https://raw.githubusercontent.com/huchukato/runpod-minimax-h3/main/media/forgehub-release.jpeg)](https://github.com/huchukato/ForgeHub/releases/latest)
 
 ## Workflows included
 
