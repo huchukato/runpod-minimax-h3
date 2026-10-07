@@ -6,7 +6,6 @@
   "iconUrl": "https://raw.githubusercontent.com/huchukato/runpod-minimax-h3/main/media/icon.png",
   "config": {
     "runsOn": "GPU",
-    "endpointType": "LB",
     "containerDiskInGb": 30,
     "gpuCount": 1,
     "gpuIds": "BLACKWELL_96",
