@@ -41,8 +41,8 @@ JOB_TIMEOUT_S = int(os.environ.get("JOB_TIMEOUT_S", "1800"))
 MINIMAX_CONFIGS = {
     "native":            {"unet": "fl2va",  "steps": 20, "sampler": "res_multistep", "scheduler": "simple", "shift_video": 12.0, "shift_audio": 3.0, "lora": None, "tau": None},
     "native_turbo":      {"unet": "fl2va",  "steps": 8,  "sampler": "euler",         "scheduler": "simple", "shift_video": 6.0,  "shift_audio": 3.0, "lora": "fl2v_turbo",  "tau": 1.3},
-    "r2va_singularity":       {"unet": "Singularity", "steps": 20, "sampler": "res_multistep", "scheduler": "simple", "shift_video": 4.0,  "shift_audio": 3.0, "lora": None, "tau": None},
-    "r2va_singularity_turbo": {"unet": "Singularity", "steps": 8,  "sampler": "euler",         "scheduler": "simple", "shift_video": 6.0,  "shift_audio": 3.0, "lora": "ref2v_turbo", "tau": 1.3},
+    "r2va_singularity":       {"unet": "Singularity", "steps": 20, "sampler": "res_multistep", "scheduler": "simple", "lora": None, "tau": None, "sigma_off": True},
+    "r2va_singularity_turbo": {"unet": "Singularity", "steps": 6,  "sampler": "euler",         "scheduler": "beta",   "lora": "ref2v_turbo_4step", "tau": 1.3, "sigma_off": True},
     "10eros":            {"unet": "10eros", "steps": 20, "sampler": "res_multistep", "scheduler": "simple", "shift_video": 12.0, "shift_audio": 3.0, "lora": None, "tau": None},
     "10eros_turbo":      {"unet": "10eros", "steps": 8,  "sampler": "euler",         "scheduler": "simple", "shift_video": 6.0,  "shift_audio": 3.0, "lora": "fusion_turbo", "tau": 1.3},
 }
@@ -163,6 +163,7 @@ def _patch(prompt, job):
 
     img_idx = 0
     drop_lora = None
+    sigma_off = {}
     for nid, node in prompt.items():
         ct = node.get("class_type", "")
         inp = node.get("inputs", {})
@@ -256,9 +257,21 @@ def _patch(prompt, job):
                     if wkey in inp:
                         inp[wkey] = cfg[wkey]
             elif ct == "MiniMaxH3SigmaShift":
-                for wkey in ("shift_video", "shift_audio"):
-                    if wkey in inp:
-                        inp[wkey] = cfg[wkey]
+                if cfg.get("sigma_off"):
+                    # API format ignores UI bypass modes — physically remove
+                    # the node and rewire its consumers to its model source.
+                    sigma_off[nid] = inp.get("model")
+                else:
+                    for wkey in ("shift_video", "shift_audio"):
+                        if wkey in inp:
+                            inp[wkey] = cfg[wkey]
+    if sigma_off:
+        for nid in sigma_off:
+            del prompt[nid]
+        for n in prompt.values():
+            for k, v in n.get("inputs", {}).items():
+                if isinstance(v, list) and v and v[0] in sigma_off:
+                    n["inputs"][k] = sigma_off[v[0]]
     # LoadImage nodes left on the template filename (fewer uploads than loaders —
     # e.g. single-image edits with an optional image2) would fail validation;
     # drop them and unlink their consumers instead.

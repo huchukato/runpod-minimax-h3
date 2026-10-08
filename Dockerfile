@@ -1,7 +1,7 @@
 # runpod-minimax-h3 — MiniMax H3 INT8 serverless worker (CUDA 13.0)
 #
 # - Comfy-Org INT8 ConvRot DiTs + Qwen3-VL-32B Heretic NVFP4 TE + lightx2v
-#   turbo LoRAs, loaded from the network volume (~100GB, needs a 96GB GPU)
+#   turbo LoRAs, loaded from the network volume (~100GB, needs a 48GB+ GPU)
 # - Missing volume files are auto-downloaded at worker boot from
 #   models-manifest.txt (populate-volume.sh, VOLUME_AUTOPOPULATE=false to skip)
 # - runpod serverless handler drives ComfyUI per-job (handler.py)
@@ -26,7 +26,7 @@ RUN dl() { \
     dl huchukato ComfyUI-QwenVL-Mod main ComfyUI-QwenVL-Mod && \
     dl huchukato ComfyUI-RIFE-TensorRT-Auto master ComfyUI-RIFE-TensorRT-Auto && \
     dl huchukato ComfyUI-Upscaler-TensorRT-Auto master ComfyUI-Upscaler-TensorRT-Auto && \
-    dl huchukato ComfyUI-TagForge main ComfyUI-TagForge && \
+    dl huchukato ComfyUI-TagForge v2.3.0 ComfyUI-TagForge && \
     dl huchukato ComfyUI-PerfectVideoResolution master ComfyUI-PerfectVideoResolution && \
     dl pixaroma ComfyUI-Pixaroma main ComfyUI-Pixaroma && \
     dl kijai ComfyUI-KJNodes main ComfyUI-KJNodes && \
@@ -36,9 +36,9 @@ RUN dl() { \
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Requirements + runpod serverless SDK
+# ──────────────────────────────────────────────────────────────────────────────
 # libgl1/libglib2.0-0: opencv-python (VideoHelperSuite) fails to import without
 # them → the whole pack never registers → missing_node_type on VHS_* nodes.
-# ──────────────────────────────────────────────────────────────────────────────
 RUN apt-get update && apt-get install -y --no-install-recommends libgl1 libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
@@ -69,7 +69,7 @@ RUN WILDCARD_DIR="/opt/comfyui-baked/custom_nodes/ComfyUI-TagForge/wildcards" &&
               pmp/blwjob.yaml pmp/prmpt.yaml pmp/qwen21.yaml \
               pmp/prmpt/acc.yaml pmp/prmpt/char.yaml pmp/prmpt/clths.yaml pmp/prmpt/exprss.yaml \
               pmp/prmpt/hair.yaml pmp/prmpt/imgcmp.yaml pmp/prmpt/lctns.yaml pmp/prmpt/light.yaml pmp/prmpt/lens.yaml \
-              pmp/prmpt/pose.yaml pmp/prmpt/styles.yaml vid/act.yaml; do \
+              pmp/prmpt/pose.yaml pmp/prmpt/styles.yaml pmp/prmpt/dynmc.yaml vid/act.yaml; do \
         mkdir -p "$WILDCARD_DIR/$(dirname "$wf")" && \
         wget -q --tries=3 --timeout=30 "$WILDCARD_BASE/$wf" -O "$WILDCARD_DIR/$wf" || \
         echo "⚠️ wildcard $wf download failed"; \

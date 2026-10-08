@@ -31,6 +31,7 @@ runpod_volume:
   vae_approx: vae_approx
   ultralytics: ultralytics
   sams: sams
+  upscale_models: upscale_models
 YAML
 
 # Auto-populate the network volume on first boot (models-manifest.txt).
