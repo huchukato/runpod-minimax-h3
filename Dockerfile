@@ -6,8 +6,6 @@
 #   models-manifest.txt (populate-volume.sh, VOLUME_AUTOPOPULATE=false to skip)
 # - runpod serverless handler drives ComfyUI per-job (handler.py)
 #
-# Build (from repo root):
-#   docker build -t huchukato/comfyui-runpod-serverless:mmh3 .
 
 FROM huchukato/comfyui-base:cu130
 
@@ -49,7 +47,7 @@ RUN bash -c 'cd /opt/comfyui-baked/custom_nodes && for node_dir in */; do \
         fi; \
     done' && \
     pip install --no-cache-dir --no-deps "transformers>=5.2.0" && \
-    pip install --no-cache-dir 'runpod>=1.12' requests "huggingface_hub[cli]" hf_transfer && \
+    pip install --no-cache-dir 'runpod>=1.12' requests boto3 "huggingface_hub[cli]" hf_transfer && \
     pip cache purge
 
 # ──────────────────────────────────────────────────────────────────────────────
