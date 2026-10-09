@@ -41,9 +41,9 @@ Deployed the endpoint? Drive it with ForgeHub — workflows, wildcard browsing, 
 
 ## Model stack (auto-provisioned)
 
-- DiTs: Comfy-Org `minimax_h3_fl2va` INT8, `Minimax-h3_Singularity_ref2va` INT8 (T2V/I2V/R2V/V2V in one unet), `10Eros_Max_h3_hybrid_beta5` INT8
+- DiTs: Comfy-Org `minimax_h3_fl2va` INT8, `Minimax-h3_Singularity_ref2va` INT8 (T2V/I2V/R2V/V2V in one unet)
 - Text encoder: `qwen3vl_32b_heretic_minimax_h3_nvfp4` (Momoking)
-- Turbo LoRAs: lightx2v fl2v/ref2v 8-step, TenStrip fusion turbo
+- Turbo LoRAs: lightx2v fl2v/ref2v 8-step
 - Style LoRAs (Singularity `lora` param): `h3-realism-people` (fal), `h3_character_swap` (akatz)
 - VAEs: MiniMax H3 video fp16 + audio fp32, `taeh3` preview VAE
 - Face detailer models: `face_yolov8m` + `sam_vit_b` (Easy-Use/Impact)
