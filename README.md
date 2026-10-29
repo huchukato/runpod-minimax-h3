@@ -9,7 +9,7 @@ A production-ready [Runpod Serverless](https://docs.runpod.io/serverless/overvie
 ## Deploy
 
 1. **Storage first**: create a [network volume](https://console.runpod.io/user/storage) (≥160GB) in a datacenter with 96GB Pro GPUs — e.g. `US-NE-1`.
-2. Click **Deploy** → endpoint → **Edit** → Max workers ≥ 1 + attach your volume. Workers auto-download ~100GB of models on first boot (once). No volume = every job fails on missing models.
+2. Click **Deploy** → endpoint → **Edit** → set **Max workers = 1** + attach your volume. Cold start is heavy (~100GB of models on first boot, big model loads after), so one warm worker with jobs queued beats N cold workers — Runpod's deploy default is 3, lower it. Workers auto-download the models on first boot (once). No volume = every job fails on missing models.
 3. Call it via the Runpod API or ForgeHub below — workflows, wildcards, job queue and outputs included; paste your API key and it detects the endpoint by itself.
 
 [![Download ForgeHub](https://raw.githubusercontent.com/huchukato/runpod-minimax-h3/main/media/forgehub-release.jpeg)](https://github.com/huchukato/ForgeHub/releases/latest)
