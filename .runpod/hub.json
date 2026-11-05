@@ -1,5 +1,5 @@
 {
-  "title": "MiniMax H3 - Video Generation",
+  "title": "MiniMax H3 - Video & Audio Generation",
   "description": "ComfyUI serverless worker for MiniMax H3: text/image/first-last-frame/reference-to-video with audio, lightx2v 8-step turbo LoRAs, TensorRT RIFE interpolation + upscaling, wildcard prompts and a Qwen3-VL enhancer. Models auto-download to your network volume on first boot.",
   "type": "serverless",
   "category": "video",
