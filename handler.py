@@ -390,8 +390,8 @@ def _patch(prompt, job):
             for wkey in ("preset_prompt", "enhancement_style"):
                 if wkey in inp:
                     inp[wkey] = job["vl_preset"]
-        if director_tdata is None and job.get("enhance") is False and "passthrough" in inp:
-            inp["passthrough"] = True
+        if director_tdata is None and "passthrough" in inp:
+            inp["passthrough"] = job.get("enhance") is False
         # Storyboard: the QwenVL feeds external_prompt, so the style directive
         # cannot ride the global prompt — a StringConcatenate node prepends it
         # verbatim to the compiled prompt instead of letting the VLM weave it in.
