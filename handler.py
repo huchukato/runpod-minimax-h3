@@ -8,7 +8,7 @@ Job input:
   {
     "workflow": "MiniMaxH3-Turbo-R2VA-GGUF.json",   # file in /opt/workflows
     "prompt":   "...",                             # enhancer/directive text
-    "config":   "native|native_turbo|r2va_native|r2va_native_turbo|10eros|10eros_turbo",
+    "config":   "prism_r2va_turbo|10eros_fl2va_turbo|hybrid_fl2va_r2va",
     "camera_tag": "[ORBIT]",                       # optional
     "seconds":  6,                                 # optional duration override
     "images":   ["https://... or base64"],         # optional, fills LoadImage nodes in id order
@@ -55,12 +55,12 @@ S3_PREFIX = os.environ.get("S3_OUTPUT_PREFIX", "outputs")
 
 # Config → unet filename needle + sampler values (mirrors chat_service.py _MINIMAX_CONFIGS)
 MINIMAX_CONFIGS = {
-    "native":            {"unet": "fl2va",  "steps": 20, "sampler": "res_multistep", "scheduler": "simple", "shift_video": 12.0, "shift_audio": 3.0, "lora": None, "tau": None},
-    "native_turbo":      {"unet": "fl2va",  "steps": 8,  "sampler": "euler",         "scheduler": "simple", "shift_video": 6.0,  "shift_audio": 3.0, "lora": "fl2v_turbo",  "tau": 1.3},
-    "r2va_singularity":       {"unet": "Singularity", "steps": 20, "sampler": "res_multistep", "scheduler": "simple", "lora": None, "tau": None, "sigma_off": True},
-    "r2va_singularity_turbo": {"unet": "Singularity", "steps": 6,  "sampler": "euler",         "scheduler": "beta",   "lora": "ref2v_turbo_4step", "tau": 1.3, "sigma_off": True},
-    "10eros":            {"unet": "10eros", "steps": 20, "sampler": "res_multistep", "scheduler": "simple", "shift_video": 12.0, "shift_audio": 3.0, "lora": None, "tau": None},
-    "10eros_turbo":      {"unet": "10eros", "steps": 8,  "sampler": "euler",         "scheduler": "simple", "shift_video": 6.0,  "shift_audio": 3.0, "lora": "fusion_turbo", "tau": 1.3},
+    # PRISM (Singularity x 10Eros merge): 8 steps sharp, euler/beta, shift 12/3
+    "prism_r2va_turbo":   {"unet": "PRISM_DMAD", "steps": 8, "sampler": "euler", "scheduler": "beta",   "shift_video": 12.0, "shift_audio": 3.0, "lora": None, "tau": None, "sigma_off": True},
+    # 10Eros beta7 fix1: FL2VA base, 8-step turbo integrated, euler/simple, shift 12/3
+    "10eros_fl2va_turbo": {"unet": "beta7_fix1",  "steps": 8, "sampler": "euler", "scheduler": "simple", "shift_video": 12.0, "shift_audio": 3.0, "lora": None, "tau": None},
+    # Hybrid DMAD-PDMD: FL2VA backbone + Ref2VA guidance, 4-8 steps, CFG 1.0-1.5
+    "hybrid_fl2va_r2va":  {"unet": "Hybrid-DMAD", "steps": 8, "sampler": "euler", "scheduler": "simple", "shift_video": 12.0, "shift_audio": 3.0, "lora": None, "tau": None},
 }
 
 
