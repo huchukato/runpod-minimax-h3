@@ -88,6 +88,11 @@ def _boot_comfy():
         "python3", "main.py",
         "--listen", "127.0.0.1", "--port", "8188",
         "--disable-auto-launch",
+        # triton kernels (kitchen) — safe on the int8-convrot stacks (NOT in the
+        # corruption list, and the pods run these same models with it) — the
+        # sage/fast/async-offload flags stay out, those corrupt the quantized
+        # weights into flat garbage.
+        "--enable-triton-backend",
     ] + os.environ.get("COMFYUI_EXTRA_ARGS", "").split()
     comfy_log = open("/workspace/comfy.log", "ab", buffering=0)
     proc = subprocess.Popen(cmd, cwd=COMFY_DIR, stdout=comfy_log, stderr=subprocess.STDOUT)
