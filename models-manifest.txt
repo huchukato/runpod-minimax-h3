@@ -11,8 +11,8 @@ text_encoders	qwen3vl_32b_heretic_minimax_h3_nvfp4.safetensors	https://huggingfa
 vae	minimax_h3_video_vae_fp16.safetensors	https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_fp16.safetensors
 vae	minimax_h3_audio_vae_fp32.safetensors	https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors
 # ── LoRA style ──
-loras	h3-realism-people-t2v-i2v-r2v.safetensors	https://huggingface.co/OliviaRossi/Minimax-h3_Singularity-x-10Eros-Max_PRISM/resolve/main/h3-realism-people-t2v-i2v-r2v.safetensors
-loras	h3_character_swap.safetensors	https://huggingface.co/huchukato/Minimax-H3-Character-Swap/resolve/main/h3_character_swap.safetensors
+loras	h3-realism-people-t2v-i2v-r2v.safetensors	https://huggingface.co/fal/MiniMax-H3-Realism-People-LoRA/resolve/main/h3-realism-people-t2v-i2v-r2v.safetensors
+loras	h3_character_swap_v1.5.safetensors	https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA/resolve/main/h3_character_swap_v1.5.safetensors
 # ── Ultralytics models ──
 ultralytics/bbox	face_yolov8m.pt	https://huggingface.co/huchukato/garage/resolve/main/ultralytics/bbox/face_yolov8m.pt
 sams	sam_vit_b_01ec64.pth	https://huggingface.co/huchukato/garage/resolve/main/sams/sam_vit_b_01ec64.pth
