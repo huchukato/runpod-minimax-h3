@@ -24,7 +24,6 @@ A production-ready [Runpod Serverless](https://docs.runpod.io/serverless/overvie
 | `MiniMaxH3-Turbo-R2VA.json` | Reference images → video + audio |
 | `MiniMaxH3-Singularity-R2VA.json` | Singularity fusion — up to 3 ref images + ref video |
 | `MiniMaxH3-Director-Native.json` | **Director**: character sheet + one idea per line → multi-scene storyboard with audio; the worker auto-analyzes the subject and expands each idea via the built-in QwenVL |
-| `MiniMaxH3-Director-Storyboard.json` | **Director**: one idea (+ up to 3 storyboard frames) → single video; the in-graph QwenVL turns the idea into a full R2VA prompt |
 
 ## Requirements
 
