@@ -121,7 +121,7 @@
  },
  "397:1": {
   "inputs": {
-   "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+   "unet_name": "PRISM_DMAD_PDMD_int8.safetensors",
    "weight_dtype": "default"
   },
   "class_type": "UNETLoader",
@@ -131,7 +131,7 @@
  },
  "397:16": {
   "inputs": {
-   "unet_name": "Minimax-h3_Singularity_ref2va_Pruned_v1.3_int8.safetensors",
+   "unet_name": "PRISM_DMAD_PDMD_int8.safetensors",
    "weight_dtype": "default"
   },
   "class_type": "UNETLoader",
@@ -206,7 +206,7 @@
   "inputs": {
    "attention": "comfy kitchen attention",
    "model": [
-    "253:214",
+    "397:16",
     0
    ]
   },
@@ -442,34 +442,6 @@
   "class_type": "AutoRifeTensorrt",
   "_meta": {
    "title": "Auto RIFE TensorRT"
-  }
- },
- "253:213": {
-  "inputs": {
-   "lora_name": "minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors",
-   "strength_model": 1,
-   "model": [
-    "397:16",
-    0
-   ]
-  },
-  "class_type": "LoraLoaderModelOnly",
-  "_meta": {
-   "title": "Turbo LoRA (ref2v)"
-  }
- },
- "253:214": {
-  "inputs": {
-   "lora_name": "h3-realism-people-t2v-i2v-r2v.safetensors",
-   "strength_model": 1,
-   "model": [
-    "253:213",
-    0
-   ]
-  },
-  "class_type": "LoraLoaderModelOnly",
-  "_meta": {
-   "title": "Style LoRA"
   }
  },
  "253:215": {

@@ -1,549 +1,535 @@
 {
-  "126": {
-    "inputs": {
-      "frame_rate": 48,
-      "loop_count": 0,
-      "filename_prefix": [
-        "261",
-        4
-      ],
-      "format": "video/h264-mp4",
-      "pix_fmt": "yuv420p",
-      "crf": 20,
-      "save_metadata": true,
-      "trim_to_audio": false,
-      "pingpong": false,
-      "save_output": true,
-      "images": [
-        "254:177",
-        0
-      ],
-      "audio": [
-        "105:23",
-        0
-      ]
-    },
-    "class_type": "VHS_VideoCombine",
-    "_meta": {
-      "title": "48FPS"
-    }
+ "126": {
+  "inputs": {
+   "frame_rate": 48,
+   "loop_count": 0,
+   "filename_prefix": [
+    "261",
+    4
+   ],
+   "format": "video/h264-mp4",
+   "pix_fmt": "yuv420p",
+   "crf": 20,
+   "save_metadata": true,
+   "trim_to_audio": false,
+   "pingpong": false,
+   "save_output": true,
+   "images": [
+    "254:177",
+    0
+   ],
+   "audio": [
+    "105:23",
+    0
+   ]
   },
-  "220": {
-    "inputs": {
-      "model": "MiniMax H3",
-      "aspect_ratio": "3:4",
-      "resolution": "Native \u2014 864\u00d71184",
-      "divisible_by": 32,
-      "upscale": false,
-      "upscale_method": "lanczos",
-      "small_image_mode": "none",
-      "pad_color": "#FFFFFF",
-      "use_image_aspect": true
-    },
-    "class_type": "ComfyUI-PerfectVideoResolution",
-    "_meta": {
-      "title": "Perfect Video Resolution"
-    }
-  },
-  "250": {
-    "inputs": {},
-    "class_type": "PixaromaRunTimer",
-    "_meta": {
-      "title": "Run Timer Pixaroma"
-    }
-  },
-  "251": {
-    "inputs": {},
-    "class_type": "PixaromaMonitor",
-    "_meta": {
-      "title": "Monitor Pixaroma"
-    }
-  },
-  "259": {
-    "inputs": {
-      "image": "square.jpeg",
-      "LoadImageMiniState": "{\"version\":1,\"mode\":\"off\",\"max_mp\":1,\"longest_side\":1024,\"scale_factor\":1,\"fit_w\":1024,\"fit_h\":1024,\"cover_w\":1024,\"cover_h\":1024,\"ratio_preset\":\"1:1\",\"ratio_w\":1,\"ratio_h\":1,\"ratio_action\":\"crop\",\"pad_color\":\"#808080\",\"pad_top\":0,\"pad_bottom\":0,\"pad_left\":0,\"pad_right\":0,\"crop_anchor\":\"center\",\"crop_scale\":true,\"snap\":0,\"resample\":\"auto\",\"allow_upscale\":true,\"orig_name\":\"square.jpeg\"}"
-    },
-    "class_type": "PixaromaLoadImageMini",
-    "_meta": {
-      "title": "Reference 1"
-    }
-  },
-  "260": {
-    "inputs": {
-      "image": "Qwen21_2026-10-07_007%.jpg",
-      "LoadImageMiniState": "{\"version\":1,\"mode\":\"off\",\"max_mp\":1,\"longest_side\":1024,\"scale_factor\":1,\"fit_w\":1024,\"fit_h\":1024,\"cover_w\":1024,\"cover_h\":1024,\"ratio_preset\":\"1:1\",\"ratio_w\":1,\"ratio_h\":1,\"ratio_action\":\"crop\",\"pad_color\":\"#808080\",\"pad_top\":0,\"pad_bottom\":0,\"pad_left\":0,\"pad_right\":0,\"crop_anchor\":\"center\",\"crop_scale\":true,\"snap\":0,\"resample\":\"auto\",\"allow_upscale\":true,\"orig_name\":\"Qwen21_2026-10-07_007%.jpg\"}"
-    },
-    "class_type": "PixaromaLoadImageMini",
-    "_meta": {
-      "title": "Reference 2"
-    }
-  },
-  "261": {
-    "inputs": {
-      "image_info": [
-        "259",
-        1
-      ]
-    },
-    "class_type": "PixaromaImageInfo",
-    "_meta": {
-      "title": "Image Info Pixaroma"
-    }
-  },
-  "264": {
-    "inputs": {},
-    "class_type": "PixaromaGroupSwitch",
-    "_meta": {
-      "title": "Reference"
-    }
-  },
-  "265": {
-    "inputs": {
-      "text": "subject_definitions:\n<Subject 1> is a vibrant, modern 3D render of the text \"MINIMAX H3 SINGULARITY\" with glowing neon circuitry, digital waveforms, and a deep purple cosmic backdrop \u2014 used as a stylized title card. <Picture 1> is a high-contrast, cinematic tech-logo graphic.\n\n<Subject 2> is Jinx, a young woman with electric blue pigtails, pink eyes, cloud-pattern tattoos across her arms and legs, wearing a pink halter top, brown corset, plaid mini-skirt, black arm guards, and combat boots. <Picture 2> is a full character sheet displaying multiple angles and expressions.\n\n<Subject 3> is Tifa Lockhart, a fit young woman with long straight black hair, red eyes, wearing a white ribbed crop top, black utility skirt with straps, black leggings, red combat boots, and red fingerless gloves. <Picture 3> is a full character sheet displaying multiple angles and expressions.\n\nsummary:\nA continuous 5s scene in a sleek modern living room: the apartment door opens to reveal only hands and then close-ups of Jinx and Tifa smiling at each other; their shadows embrace and kiss on the floor as the camera falls; they tumble onto a couch, kiss passionately, Jinx grabs a pillow printed with the Minimax H3 Singularity logo and hurls it at the camera; the lens spins and lands on the pillow at floor level, revealing the logo clearly; an off-screen male voice delivers the tagline as fade to black.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 4]): fully_preserved \u2014 the pillow\u2019s printed logo is in sharp focus, centered, matching the reference\u2019s typography, glow, and circuitry details.\n<Subject 2> (appears in [Shot 1], [Shot 2], [Shot 3], [Shot 4]): fully_preserved \u2014 blue pigtails, pink eyes, tattoos, and outfit remain exact; expressions shift naturally from shy smiles to passionate intimacy.\n<Subject 3> (appears in [Shot 1], [Shot 2], [Shot 3], [Shot 4]): fully_preserved \u2014 black hair, red eyes, white crop, black skirt, and red gloves stay consistent; her playful push and kiss match her confident demeanor.\n\ndetailed_description:\nThe target video uses a modern 3D anime-rendered style with cinematic lighting and shallow depth of field.\n[Shot 1] 00:00.000 \u2014 The apartment door swings inward; a close-up captures a hand gripping the handle, then cuts to tight shots of Jinx and Tifa\u2019s faces as they lock eyes and smile warmly. Soft footsteps echo in the quiet room.\n[Shot 2] 00:02.500 \u2014 The camera tilts down to the floor, framing their elongated shadows. They embrace and press lips together in shadowed intimacy; the camera is knocked loose, tumbling forward with a soft thud.\n[Shot 3] 00:03.200 \u2014 From the floor\u2019s perspective, the two girls are now on a sleek dark couch, kissing and touching. Jinx reaches for the pillow from Shot 1, snatches it, and tosses it forcefully toward the lens.\n[Shot 4] 00:04.000 \u2014 The camera spins rightward from impact, landing on the pillow at floor level. The Minimax H3 Singularity logo is crisp, glowing, and perfectly centered. An off-screen male voice delivers: \"Singularity. One model to rule them all.\" Fade to black. An off-screen voice says: \"Singularty. One model to rule them all.\"\n\noverall_soundscape:\nSoft ambient hum of a modern apartment, gentle footsteps, fabric rustle when Jinx grabs the pillow, a soft camera thud, and a smooth, confident off-screen male voice with a slight tech-modern accent, delivering the tagline in crisp, cinematic timing.\n\nnon_diegetic_music:\nN/A",
-      "source": [
-        "105:276",
-        0
-      ]
-    },
-    "class_type": "PixaromaShowText",
-    "_meta": {
-      "title": "Qwen Generated Prompt"
-    }
-  },
-  "266": {
-    "inputs": {
-      "label_json": "{\"text\":\"MiniMax H3\",\"fontSize\":98,\"fontFamily\":\"Arial\",\"fontColor\":\"#ffffff\",\"textAlign\":\"left\",\"backgroundColor\":\"#3bd172\",\"padding\":10,\"borderRadius\":6,\"opacity\":1,\"fontWeight\":\"bold\",\"lineHeight\":1}"
-    },
-    "class_type": "PixaromaLabel",
-    "_meta": {
-      "title": "Label Pixaroma"
-    }
-  },
-  "267": {
-    "inputs": {
-      "label_json": "{\"text\":\"T2V+I2V+R2V+V2V + Qwen3.x Prompting + RIFE + Upscale\",\"fontSize\":17,\"fontFamily\":\"Courier New\",\"fontColor\":\"#ffffff\",\"textAlign\":\"left\",\"backgroundColor\":\"#818cf8\",\"padding\":10,\"borderRadius\":6,\"opacity\":0.7,\"fontWeight\":\"bold\",\"lineHeight\":1}"
-    },
-    "class_type": "PixaromaLabel",
-    "_meta": {
-      "title": "Label Pixaroma"
-    }
-  },
-  "270": {
-    "inputs": {
-      "label_json": "{\"text\":\"SINGULARITY\",\"fontSize\":44,\"fontFamily\":\"Impact\",\"fontColor\":\"#4ade80\",\"textAlign\":\"left\",\"backgroundColor\":\"transparent\",\"padding\":10,\"borderRadius\":9,\"opacity\":1,\"fontWeight\":\"bold\",\"lineHeight\":1}"
-    },
-    "class_type": "PixaromaLabel",
-    "_meta": {
-      "title": "Label Pixaroma"
-    }
-  },
-  "272": {
-    "inputs": {
-      "image": "Qwen21_2026-10-07_001__6.jpg",
-      "LoadImageMiniState": "{\"version\":1,\"mode\":\"off\",\"max_mp\":1,\"longest_side\":1024,\"scale_factor\":1,\"fit_w\":1024,\"fit_h\":1024,\"cover_w\":1024,\"cover_h\":1024,\"ratio_preset\":\"1:1\",\"ratio_w\":1,\"ratio_h\":1,\"ratio_action\":\"crop\",\"pad_color\":\"#808080\",\"pad_top\":0,\"pad_bottom\":0,\"pad_left\":0,\"pad_right\":0,\"crop_anchor\":\"center\",\"crop_scale\":true,\"snap\":0,\"resample\":\"auto\",\"allow_upscale\":true,\"orig_name\":\"Qwen21_2026-10-07_001__6.jpg\"}"
-    },
-    "class_type": "PixaromaLoadImageMini",
-    "_meta": {
-      "title": "Reference 3"
-    }
-  },
-  "273": {
-    "inputs": {},
-    "class_type": "PixaromaGroupSwitch",
-    "_meta": {
-      "title": "Output"
-    }
-  },
-  "275": {
-    "inputs": {
-      "label_json": "{\"text\":\"ONE MODEL TO RULE THEM ALL\",\"fontSize\":18,\"fontFamily\":\"Arial\",\"fontColor\":\"#ffffff\",\"textAlign\":\"left\",\"backgroundColor\":\"transparent\",\"padding\":10,\"borderRadius\":6,\"opacity\":0.9,\"fontWeight\":\"bold\",\"lineHeight\":1}"
-    },
-    "class_type": "PixaromaLabel",
-    "_meta": {
-      "title": "Label Pixaroma"
-    }
-  },
-  "105:10": {
-    "inputs": {
-      "samples": [
-        "105:14",
-        0
-      ],
-      "vae": [
-        "105:11",
-        0
-      ]
-    },
-    "class_type": "VAEDecode",
-    "_meta": {
-      "title": "Decodifica VAE"
-    }
-  },
-  "105:14": {
-    "inputs": {
-      "noise": [
-        "105:15",
-        0
-      ],
-      "guider": [
-        "105:16",
-        0
-      ],
-      "sampler": [
-        "105:156",
-        0
-      ],
-      "sigmas": [
-        "105:9",
-        0
-      ],
-      "latent_image": [
-        "105:224",
-        1
-      ]
-    },
-    "class_type": "SamplerCustomAdvanced",
-    "_meta": {
-      "title": "SamplerCustomAdvanced"
-    }
-  },
-  "105:91": {
-    "inputs": {
-      "fps": 24,
-      "bit_depth": 8,
-      "color_space": "sRGB",
-      "codec": "none",
-      "images": [
-        "105:10",
-        0
-      ],
-      "audio": [
-        "105:23",
-        0
-      ]
-    },
-    "class_type": "CreateVideo",
-    "_meta": {
-      "title": "Crea Video"
-    }
-  },
-  "105:111": {
-    "inputs": {
-      "value": 10
-    },
-    "class_type": "PrimitiveFloat",
-    "_meta": {
-      "title": "Float (duration)"
-    }
-  },
-  "105:16": {
-    "inputs": {
-      "model": [
-        "105:255",
-        0
-      ],
-      "conditioning": [
-        "105:224",
-        0
-      ]
-    },
-    "class_type": "BasicGuider",
-    "_meta": {
-      "title": "Guida Base"
-    }
-  },
-  "105:15": {
-    "inputs": {
-      "noise_seed": 415292446726339
-    },
-    "class_type": "RandomNoise",
-    "_meta": {
-      "title": "RandomNoise"
-    }
-  },
-  "105:6": {
-    "inputs": {
-      "unet_name": "Minimax-h3_Singularity_ref2va_Pruned_v1.3_int8.safetensors",
-      "weight_dtype": "default"
-    },
-    "class_type": "UNETLoader",
-    "_meta": {
-      "title": "Carica modello di diffusione"
-    }
-  },
-  "105:156": {
-    "inputs": {
-      "sampler_name": "euler"
-    },
-    "class_type": "KSamplerSelect",
-    "_meta": {
-      "title": "KSamplerSelect"
-    }
-  },
-  "105:9": {
-    "inputs": {
-      "scheduler": "beta",
-      "steps": 6,
-      "denoise": 1,
-      "model": [
-        "105:255",
-        0
-      ]
-    },
-    "class_type": "BasicScheduler",
-    "_meta": {
-      "title": "Scheduler Base"
-    }
-  },
-  "105:107": {
-    "inputs": {
-      "expression": "max(5, round(a * 24)) + (5 - (max(5, round(a * 24)) % 17)) % 17",
-      "values.a": [
-        "105:111",
-        0
-      ]
-    },
-    "class_type": "ComfyMathExpression",
-    "_meta": {
-      "title": "Espressione Matematica"
-    }
-  },
-  "105:13": {
-    "inputs": {
-      "clip_name": "qwen3vl_32b_heretic_minimax_h3_nvfp4.safetensors",
-      "type": "minimax",
-      "device": "default"
-    },
-    "class_type": "CLIPLoader",
-    "_meta": {
-      "title": "Carica CLIP"
-    }
-  },
-  "105:11": {
-    "inputs": {
-      "vae_name": "minimax_h3_video_vae_fp16.safetensors"
-    },
-    "class_type": "VAELoader",
-    "_meta": {
-      "title": "Carica VAE"
-    }
-  },
-  "105:24": {
-    "inputs": {
-      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
-    },
-    "class_type": "VAELoader",
-    "_meta": {
-      "title": "Carica VAE"
-    }
-  },
-  "105:224": {
-    "inputs": {
-      "prompt": [
-        "105:276",
-        0
-      ],
-      "width": [
-        "220",
-        0
-      ],
-      "height": [
-        "220",
-        1
-      ],
-      "length": [
-        "105:107",
-        1
-      ],
-      "ref_image_size": "max",
-      "clip": [
-        "105:13",
-        0
-      ],
-      "vae": [
-        "105:11",
-        0
-      ],
-      "audio_vae": [
-        "105:24",
-        0
-      ],
-      "ref_images.ref_image_0": [
-        "261",
-        0
-      ],
-      "ref_images.ref_image_1": [
-        "260",
-        0
-      ],
-      "ref_images.ref_image_2": [
-        "272",
-        0
-      ]
-    },
-    "class_type": "MiniMaxH3ReferenceToVideo",
-    "_meta": {
-      "title": "MiniMax H3 Riferimento a Video"
-    }
-  },
-  "105:213": {
-    "inputs": {
-      "lora_name": "minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors",
-      "strength_model": 1,
-      "model": [
-        "105:6",
-        0
-      ]
-    },
-    "class_type": "LoraLoaderModelOnly",
-    "_meta": {
-      "title": "Carica LoRA"
-    }
-  },
-  "105:255": {
-    "inputs": {
-      "selection": "sol-attn",
-      "selection.tau": 1,
-      "start_percent": 0.2,
-      "end_percent": 1,
-      "dense_blocks": "",
-      "min_tokens": 12288,
-      "extra_tokens": 256,
-      "sink_conditioning": "exact_kv_and_rows",
-      "verbose": false,
-      "model": [
-        "105:262",
-        0
-      ]
-    },
-    "class_type": "BlockSparseAttention",
-    "_meta": {
-      "title": "Attenzione sparsa del modello"
-    }
-  },
-  "105:23": {
-    "inputs": {
-      "samples": [
-        "105:14",
-        0
-      ],
-      "vae": [
-        "105:24",
-        0
-      ]
-    },
-    "class_type": "VAEDecodeAudio",
-    "_meta": {
-      "title": "Decodifica audio VAE"
-    }
-  },
-  "105:262": {
-    "inputs": {
-      "attention": "comfy kitchen attention",
-      "model": [
-        "105:213",
-        0
-      ]
-    },
-    "class_type": "ModelAttentionBackend",
-    "_meta": {
-      "title": "Backend di attenzione del modello"
-    }
-  },
-  "105:276": {
-    "inputs": {
-      "model_name": "GGUF: Qwen3.5-9B-The-Defiant-Fable-Uncnr-Heretic-NEO-MAX-Q6_K.gguf",
-      "preset_prompt": "MiniMax \u203a NSFW R2VA",
-      "camera_tag": "None",
-      "prompt": "",
-      "max_tokens": 8192,
-      "keep_model_loaded": false,
-      "seed": 3227859527,
-      "keep_last_prompt": false,
-      "passthrough": false,
-      "frame_count": 16,
-      "duration": "5s",
-      "image": [
-        "261",
-        0
-      ],
-      "image2": [
-        "260",
-        0
-      ],
-      "image3": [
-        "272",
-        0
-      ]
-    },
-    "class_type": "QwenVL_Unified",
-    "_meta": {
-      "title": "\ud83e\udde0 QwenVL Unified (HF / GGUF)"
-    }
-  },
-  "254:176": {
-    "inputs": {
-      "model": "rife425_ensemble_False_scale_1_sim",
-      "precision": "fp16",
-      "resolution_profile": "large",
-      "batch_size": 1
-    },
-    "class_type": "AutoLoadRifeTensorrtModel",
-    "_meta": {
-      "title": "(Down)load RIFE TensorRT Model"
-    }
-  },
-  "254:186": {
-    "inputs": {
-      "model": "2xLexicaRRDBNet",
-      "precision": "fp16",
-      "batch_size": 2
-    },
-    "class_type": "LoadUpscalerTensorrtModel",
-    "_meta": {
-      "title": "Load Upscale Tensorrt Model"
-    }
-  },
-  "254:185": {
-    "inputs": {
-      "resize_to": "2x",
-      "batch_size": 2,
-      "resize_width": 2048,
-      "resize_height": 2048,
-      "images": [
-        "105:10",
-        0
-      ],
-      "upscaler_trt_model": [
-        "254:186",
-        0
-      ]
-    },
-    "class_type": "UpscalerTensorrt",
-    "_meta": {
-      "title": "Upscaler Tensorrt \u26a1"
-    }
-  },
-  "254:177": {
-    "inputs": {
-      "clear_cache_after_n_frames": 100,
-      "multiplier": 2,
-      "keep_model_loaded": false,
-      "batch_size": 1,
-      "multiplier_list": "",
-      "frames": [
-        "254:185",
-        0
-      ],
-      "rife_trt_model": [
-        "254:176",
-        0
-      ]
-    },
-    "class_type": "AutoRifeTensorrt",
-    "_meta": {
-      "title": "Auto RIFE TensorRT"
-    }
+  "class_type": "VHS_VideoCombine",
+  "_meta": {
+   "title": "48FPS"
   }
+ },
+ "220": {
+  "inputs": {
+   "model": "MiniMax H3",
+   "aspect_ratio": "3:4",
+   "resolution": "Native — 864×1184",
+   "divisible_by": 32,
+   "upscale": false,
+   "upscale_method": "lanczos",
+   "small_image_mode": "none",
+   "pad_color": "#FFFFFF",
+   "use_image_aspect": true
+  },
+  "class_type": "ComfyUI-PerfectVideoResolution",
+  "_meta": {
+   "title": "Perfect Video Resolution"
+  }
+ },
+ "250": {
+  "inputs": {},
+  "class_type": "PixaromaRunTimer",
+  "_meta": {
+   "title": "Run Timer Pixaroma"
+  }
+ },
+ "251": {
+  "inputs": {},
+  "class_type": "PixaromaMonitor",
+  "_meta": {
+   "title": "Monitor Pixaroma"
+  }
+ },
+ "259": {
+  "inputs": {
+   "image": "square.jpeg",
+   "LoadImageMiniState": "{\"version\":1,\"mode\":\"off\",\"max_mp\":1,\"longest_side\":1024,\"scale_factor\":1,\"fit_w\":1024,\"fit_h\":1024,\"cover_w\":1024,\"cover_h\":1024,\"ratio_preset\":\"1:1\",\"ratio_w\":1,\"ratio_h\":1,\"ratio_action\":\"crop\",\"pad_color\":\"#808080\",\"pad_top\":0,\"pad_bottom\":0,\"pad_left\":0,\"pad_right\":0,\"crop_anchor\":\"center\",\"crop_scale\":true,\"snap\":0,\"resample\":\"auto\",\"allow_upscale\":true,\"orig_name\":\"square.jpeg\"}"
+  },
+  "class_type": "PixaromaLoadImageMini",
+  "_meta": {
+   "title": "Reference 1"
+  }
+ },
+ "260": {
+  "inputs": {
+   "image": "Qwen21_2026-10-07_007%.jpg",
+   "LoadImageMiniState": "{\"version\":1,\"mode\":\"off\",\"max_mp\":1,\"longest_side\":1024,\"scale_factor\":1,\"fit_w\":1024,\"fit_h\":1024,\"cover_w\":1024,\"cover_h\":1024,\"ratio_preset\":\"1:1\",\"ratio_w\":1,\"ratio_h\":1,\"ratio_action\":\"crop\",\"pad_color\":\"#808080\",\"pad_top\":0,\"pad_bottom\":0,\"pad_left\":0,\"pad_right\":0,\"crop_anchor\":\"center\",\"crop_scale\":true,\"snap\":0,\"resample\":\"auto\",\"allow_upscale\":true,\"orig_name\":\"Qwen21_2026-10-07_007%.jpg\"}"
+  },
+  "class_type": "PixaromaLoadImageMini",
+  "_meta": {
+   "title": "Reference 2"
+  }
+ },
+ "261": {
+  "inputs": {
+   "image_info": [
+    "259",
+    1
+   ]
+  },
+  "class_type": "PixaromaImageInfo",
+  "_meta": {
+   "title": "Image Info Pixaroma"
+  }
+ },
+ "264": {
+  "inputs": {},
+  "class_type": "PixaromaGroupSwitch",
+  "_meta": {
+   "title": "Reference"
+  }
+ },
+ "265": {
+  "inputs": {
+   "text": "subject_definitions:\n<Subject 1> is a vibrant, modern 3D render of the text \"MINIMAX H3 SINGULARITY\" with glowing neon circuitry, digital waveforms, and a deep purple cosmic backdrop — used as a stylized title card. <Picture 1> is a high-contrast, cinematic tech-logo graphic.\n\n<Subject 2> is Jinx, a young woman with electric blue pigtails, pink eyes, cloud-pattern tattoos across her arms and legs, wearing a pink halter top, brown corset, plaid mini-skirt, black arm guards, and combat boots. <Picture 2> is a full character sheet displaying multiple angles and expressions.\n\n<Subject 3> is Tifa Lockhart, a fit young woman with long straight black hair, red eyes, wearing a white ribbed crop top, black utility skirt with straps, black leggings, red combat boots, and red fingerless gloves. <Picture 3> is a full character sheet displaying multiple angles and expressions.\n\nsummary:\nA continuous 5s scene in a sleek modern living room: the apartment door opens to reveal only hands and then close-ups of Jinx and Tifa smiling at each other; their shadows embrace and kiss on the floor as the camera falls; they tumble onto a couch, kiss passionately, Jinx grabs a pillow printed with the Minimax H3 Singularity logo and hurls it at the camera; the lens spins and lands on the pillow at floor level, revealing the logo clearly; an off-screen male voice delivers the tagline as fade to black.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 4]): fully_preserved — the pillow’s printed logo is in sharp focus, centered, matching the reference’s typography, glow, and circuitry details.\n<Subject 2> (appears in [Shot 1], [Shot 2], [Shot 3], [Shot 4]): fully_preserved — blue pigtails, pink eyes, tattoos, and outfit remain exact; expressions shift naturally from shy smiles to passionate intimacy.\n<Subject 3> (appears in [Shot 1], [Shot 2], [Shot 3], [Shot 4]): fully_preserved — black hair, red eyes, white crop, black skirt, and red gloves stay consistent; her playful push and kiss match her confident demeanor.\n\ndetailed_description:\nThe target video uses a modern 3D anime-rendered style with cinematic lighting and shallow depth of field.\n[Shot 1] 00:00.000 — The apartment door swings inward; a close-up captures a hand gripping the handle, then cuts to tight shots of Jinx and Tifa’s faces as they lock eyes and smile warmly. Soft footsteps echo in the quiet room.\n[Shot 2] 00:02.500 — The camera tilts down to the floor, framing their elongated shadows. They embrace and press lips together in shadowed intimacy; the camera is knocked loose, tumbling forward with a soft thud.\n[Shot 3] 00:03.200 — From the floor’s perspective, the two girls are now on a sleek dark couch, kissing and touching. Jinx reaches for the pillow from Shot 1, snatches it, and tosses it forcefully toward the lens.\n[Shot 4] 00:04.000 — The camera spins rightward from impact, landing on the pillow at floor level. The Minimax H3 Singularity logo is crisp, glowing, and perfectly centered. An off-screen male voice delivers: \"Singularity. One model to rule them all.\" Fade to black. An off-screen voice says: \"Singularty. One model to rule them all.\"\n\noverall_soundscape:\nSoft ambient hum of a modern apartment, gentle footsteps, fabric rustle when Jinx grabs the pillow, a soft camera thud, and a smooth, confident off-screen male voice with a slight tech-modern accent, delivering the tagline in crisp, cinematic timing.\n\nnon_diegetic_music:\nN/A",
+   "source": [
+    "105:276",
+    0
+   ]
+  },
+  "class_type": "PixaromaShowText",
+  "_meta": {
+   "title": "Qwen Generated Prompt"
+  }
+ },
+ "266": {
+  "inputs": {
+   "label_json": "{\"text\":\"MiniMax H3\",\"fontSize\":98,\"fontFamily\":\"Arial\",\"fontColor\":\"#ffffff\",\"textAlign\":\"left\",\"backgroundColor\":\"#3bd172\",\"padding\":10,\"borderRadius\":6,\"opacity\":1,\"fontWeight\":\"bold\",\"lineHeight\":1}"
+  },
+  "class_type": "PixaromaLabel",
+  "_meta": {
+   "title": "Label Pixaroma"
+  }
+ },
+ "267": {
+  "inputs": {
+   "label_json": "{\"text\":\"T2V+I2V+R2V+V2V + Qwen3.x Prompting + RIFE + Upscale\",\"fontSize\":17,\"fontFamily\":\"Courier New\",\"fontColor\":\"#ffffff\",\"textAlign\":\"left\",\"backgroundColor\":\"#818cf8\",\"padding\":10,\"borderRadius\":6,\"opacity\":0.7,\"fontWeight\":\"bold\",\"lineHeight\":1}"
+  },
+  "class_type": "PixaromaLabel",
+  "_meta": {
+   "title": "Label Pixaroma"
+  }
+ },
+ "270": {
+  "inputs": {
+   "label_json": "{\"text\":\"SINGULARITY\",\"fontSize\":44,\"fontFamily\":\"Impact\",\"fontColor\":\"#4ade80\",\"textAlign\":\"left\",\"backgroundColor\":\"transparent\",\"padding\":10,\"borderRadius\":9,\"opacity\":1,\"fontWeight\":\"bold\",\"lineHeight\":1}"
+  },
+  "class_type": "PixaromaLabel",
+  "_meta": {
+   "title": "Label Pixaroma"
+  }
+ },
+ "272": {
+  "inputs": {
+   "image": "Qwen21_2026-10-07_001__6.jpg",
+   "LoadImageMiniState": "{\"version\":1,\"mode\":\"off\",\"max_mp\":1,\"longest_side\":1024,\"scale_factor\":1,\"fit_w\":1024,\"fit_h\":1024,\"cover_w\":1024,\"cover_h\":1024,\"ratio_preset\":\"1:1\",\"ratio_w\":1,\"ratio_h\":1,\"ratio_action\":\"crop\",\"pad_color\":\"#808080\",\"pad_top\":0,\"pad_bottom\":0,\"pad_left\":0,\"pad_right\":0,\"crop_anchor\":\"center\",\"crop_scale\":true,\"snap\":0,\"resample\":\"auto\",\"allow_upscale\":true,\"orig_name\":\"Qwen21_2026-10-07_001__6.jpg\"}"
+  },
+  "class_type": "PixaromaLoadImageMini",
+  "_meta": {
+   "title": "Reference 3"
+  }
+ },
+ "273": {
+  "inputs": {},
+  "class_type": "PixaromaGroupSwitch",
+  "_meta": {
+   "title": "Output"
+  }
+ },
+ "275": {
+  "inputs": {
+   "label_json": "{\"text\":\"ONE MODEL TO RULE THEM ALL\",\"fontSize\":18,\"fontFamily\":\"Arial\",\"fontColor\":\"#ffffff\",\"textAlign\":\"left\",\"backgroundColor\":\"transparent\",\"padding\":10,\"borderRadius\":6,\"opacity\":0.9,\"fontWeight\":\"bold\",\"lineHeight\":1}"
+  },
+  "class_type": "PixaromaLabel",
+  "_meta": {
+   "title": "Label Pixaroma"
+  }
+ },
+ "105:10": {
+  "inputs": {
+   "samples": [
+    "105:14",
+    0
+   ],
+   "vae": [
+    "105:11",
+    0
+   ]
+  },
+  "class_type": "VAEDecode",
+  "_meta": {
+   "title": "Decodifica VAE"
+  }
+ },
+ "105:14": {
+  "inputs": {
+   "noise": [
+    "105:15",
+    0
+   ],
+   "guider": [
+    "105:16",
+    0
+   ],
+   "sampler": [
+    "105:156",
+    0
+   ],
+   "sigmas": [
+    "105:9",
+    0
+   ],
+   "latent_image": [
+    "105:224",
+    1
+   ]
+  },
+  "class_type": "SamplerCustomAdvanced",
+  "_meta": {
+   "title": "SamplerCustomAdvanced"
+  }
+ },
+ "105:91": {
+  "inputs": {
+   "fps": 24,
+   "bit_depth": 8,
+   "color_space": "sRGB",
+   "codec": "none",
+   "images": [
+    "105:10",
+    0
+   ],
+   "audio": [
+    "105:23",
+    0
+   ]
+  },
+  "class_type": "CreateVideo",
+  "_meta": {
+   "title": "Crea Video"
+  }
+ },
+ "105:111": {
+  "inputs": {
+   "value": 10
+  },
+  "class_type": "PrimitiveFloat",
+  "_meta": {
+   "title": "Float (duration)"
+  }
+ },
+ "105:16": {
+  "inputs": {
+   "model": [
+    "105:255",
+    0
+   ],
+   "conditioning": [
+    "105:224",
+    0
+   ]
+  },
+  "class_type": "BasicGuider",
+  "_meta": {
+   "title": "Guida Base"
+  }
+ },
+ "105:15": {
+  "inputs": {
+   "noise_seed": 415292446726339
+  },
+  "class_type": "RandomNoise",
+  "_meta": {
+   "title": "RandomNoise"
+  }
+ },
+ "105:6": {
+  "inputs": {
+   "unet_name": "PRISM_DMAD_PDMD_int8.safetensors",
+   "weight_dtype": "default"
+  },
+  "class_type": "UNETLoader",
+  "_meta": {
+   "title": "Carica modello di diffusione"
+  }
+ },
+ "105:156": {
+  "inputs": {
+   "sampler_name": "euler"
+  },
+  "class_type": "KSamplerSelect",
+  "_meta": {
+   "title": "KSamplerSelect"
+  }
+ },
+ "105:9": {
+  "inputs": {
+   "scheduler": "beta",
+   "steps": 6,
+   "denoise": 1,
+   "model": [
+    "105:255",
+    0
+   ]
+  },
+  "class_type": "BasicScheduler",
+  "_meta": {
+   "title": "Scheduler Base"
+  }
+ },
+ "105:107": {
+  "inputs": {
+   "expression": "max(5, round(a * 24)) + (5 - (max(5, round(a * 24)) % 17)) % 17",
+   "values.a": [
+    "105:111",
+    0
+   ]
+  },
+  "class_type": "ComfyMathExpression",
+  "_meta": {
+   "title": "Espressione Matematica"
+  }
+ },
+ "105:13": {
+  "inputs": {
+   "clip_name": "qwen3vl_32b_heretic_minimax_h3_nvfp4.safetensors",
+   "type": "minimax",
+   "device": "default"
+  },
+  "class_type": "CLIPLoader",
+  "_meta": {
+   "title": "Carica CLIP"
+  }
+ },
+ "105:11": {
+  "inputs": {
+   "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+  },
+  "class_type": "VAELoader",
+  "_meta": {
+   "title": "Carica VAE"
+  }
+ },
+ "105:24": {
+  "inputs": {
+   "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+  },
+  "class_type": "VAELoader",
+  "_meta": {
+   "title": "Carica VAE"
+  }
+ },
+ "105:224": {
+  "inputs": {
+   "prompt": [
+    "105:276",
+    0
+   ],
+   "width": [
+    "220",
+    0
+   ],
+   "height": [
+    "220",
+    1
+   ],
+   "length": [
+    "105:107",
+    1
+   ],
+   "ref_image_size": "max",
+   "clip": [
+    "105:13",
+    0
+   ],
+   "vae": [
+    "105:11",
+    0
+   ],
+   "audio_vae": [
+    "105:24",
+    0
+   ],
+   "ref_images.ref_image_0": [
+    "261",
+    0
+   ],
+   "ref_images.ref_image_1": [
+    "260",
+    0
+   ],
+   "ref_images.ref_image_2": [
+    "272",
+    0
+   ]
+  },
+  "class_type": "MiniMaxH3ReferenceToVideo",
+  "_meta": {
+   "title": "MiniMax H3 Riferimento a Video"
+  }
+ },
+ "105:255": {
+  "inputs": {
+   "selection": "sol-attn",
+   "selection.tau": 1,
+   "start_percent": 0.2,
+   "end_percent": 1,
+   "dense_blocks": "",
+   "min_tokens": 12288,
+   "extra_tokens": 256,
+   "sink_conditioning": "exact_kv_and_rows",
+   "verbose": false,
+   "model": [
+    "105:262",
+    0
+   ]
+  },
+  "class_type": "BlockSparseAttention",
+  "_meta": {
+   "title": "Attenzione sparsa del modello"
+  }
+ },
+ "105:23": {
+  "inputs": {
+   "samples": [
+    "105:14",
+    0
+   ],
+   "vae": [
+    "105:24",
+    0
+   ]
+  },
+  "class_type": "VAEDecodeAudio",
+  "_meta": {
+   "title": "Decodifica audio VAE"
+  }
+ },
+ "105:262": {
+  "inputs": {
+   "attention": "comfy kitchen attention",
+   "model": [
+    "105:6",
+    0
+   ]
+  },
+  "class_type": "ModelAttentionBackend",
+  "_meta": {
+   "title": "Backend di attenzione del modello"
+  }
+ },
+ "105:276": {
+  "inputs": {
+   "model_name": "GGUF: Qwen3.5-9B-The-Defiant-Fable-Uncnr-Heretic-NEO-MAX-Q6_K.gguf",
+   "preset_prompt": "MiniMax › NSFW R2VA",
+   "camera_tag": "None",
+   "prompt": "",
+   "max_tokens": 8192,
+   "keep_model_loaded": false,
+   "seed": 3227859527,
+   "keep_last_prompt": false,
+   "passthrough": false,
+   "frame_count": 16,
+   "duration": "5s",
+   "image": [
+    "261",
+    0
+   ],
+   "image2": [
+    "260",
+    0
+   ],
+   "image3": [
+    "272",
+    0
+   ]
+  },
+  "class_type": "QwenVL_Unified",
+  "_meta": {
+   "title": "🧠 QwenVL Unified (HF / GGUF)"
+  }
+ },
+ "254:176": {
+  "inputs": {
+   "model": "rife425_ensemble_False_scale_1_sim",
+   "precision": "fp16",
+   "resolution_profile": "large",
+   "batch_size": 1
+  },
+  "class_type": "AutoLoadRifeTensorrtModel",
+  "_meta": {
+   "title": "(Down)load RIFE TensorRT Model"
+  }
+ },
+ "254:186": {
+  "inputs": {
+   "model": "2xLexicaRRDBNet",
+   "precision": "fp16",
+   "batch_size": 2
+  },
+  "class_type": "LoadUpscalerTensorrtModel",
+  "_meta": {
+   "title": "Load Upscale Tensorrt Model"
+  }
+ },
+ "254:185": {
+  "inputs": {
+   "resize_to": "2x",
+   "batch_size": 2,
+   "resize_width": 2048,
+   "resize_height": 2048,
+   "images": [
+    "105:10",
+    0
+   ],
+   "upscaler_trt_model": [
+    "254:186",
+    0
+   ]
+  },
+  "class_type": "UpscalerTensorrt",
+  "_meta": {
+   "title": "Upscaler Tensorrt ⚡"
+  }
+ },
+ "254:177": {
+  "inputs": {
+   "clear_cache_after_n_frames": 100,
+   "multiplier": 2,
+   "keep_model_loaded": false,
+   "batch_size": 1,
+   "multiplier_list": "",
+   "frames": [
+    "254:185",
+    0
+   ],
+   "rife_trt_model": [
+    "254:176",
+    0
+   ]
+  },
+  "class_type": "AutoRifeTensorrt",
+  "_meta": {
+   "title": "Auto RIFE TensorRT"
+  }
+ }
 }
