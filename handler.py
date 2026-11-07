@@ -8,7 +8,7 @@ Job input:
   {
     "workflow": "MiniMaxH3-Turbo-R2VA-GGUF.json",   # file in /opt/workflows
     "prompt":   "...",                             # enhancer/directive text
-    "config":   "prism_r2va_turbo|10eros_fl2va_turbo|hybrid_fl2va_r2va",
+    "config":   "prism_r2va_turbo|10eros_fl2va_turbo|hybrid_fl2va_r2va_turbo",
     "camera_tag": "[ORBIT]",                       # optional
     "seconds":  6,                                 # optional duration override
     "images":   ["https://... or base64"],         # optional, fills LoadImage nodes in id order
@@ -60,7 +60,7 @@ MINIMAX_CONFIGS = {
     # 10Eros beta7 fix1: FL2VA base, 8-step turbo integrated, euler/simple, shift 12/3
     "10eros_fl2va_turbo": {"unet": "beta7_fix1",  "steps": 8, "sampler": "euler", "scheduler": "simple", "shift_video": 12.0, "shift_audio": 3.0, "lora": None, "tau": None},
     # Hybrid DMAD-PDMD: FL2VA backbone + Ref2VA guidance, 4-8 steps, CFG 1.0-1.5
-    "hybrid_fl2va_r2va":  {"unet": "Hybrid-DMAD", "steps": 8, "sampler": "euler", "scheduler": "simple", "shift_video": 12.0, "shift_audio": 3.0, "lora": None, "tau": None},
+    "hybrid_fl2va_r2va_turbo":  {"unet": "Hybrid-DMAD", "steps": 8, "sampler": "euler", "scheduler": "simple", "shift_video": 12.0, "shift_audio": 3.0, "lora": None, "tau": None},
 }
 
 
