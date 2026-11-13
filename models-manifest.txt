@@ -5,7 +5,7 @@
 #
 # ── DiT — Comfy-Org INT8 ConvRot ──
 diffusion_models	PRISM_DMAD_PDMD_int8.safetensors	https://huggingface.co/OliviaRossi/Minimax-h3_Singularity-x-10Eros-Max_PRISM/resolve/main/PRISM_DMAD_PDMD_int8.safetensors
-diffusion_models	10Eros_Max_h3_8stepTURBO_beta7_fix1-native_int8_protected_edges_HQ.safetensors	https://huggingface.co/TenStrip/10Eros_Max/resolve/main/10Eros_Max_h3_8stepTURBO_beta7_fix1-native_int8_protected_edges_HQ.safetensors
+diffusion_models	Minimax-H3-Hybrid-DMAD-PDMD_int8.safetensors	https://huggingface.co/OliviaRossi/Minimax-H3-Hybrid-DMAD-PDMD/resolve/main/Minimax-H3-Hybrid-DMAD-PDMD_int8.safetensors
 text_encoders	qwen3vl_32b_heretic_minimax_h3_nvfp4.safetensors	https://huggingface.co/Momoking/Qwen3-VL-32B-Heretic-MiniMax-H3-NVFP4/resolve/main/qwen3vl_32b_heretic_minimax_h3_nvfp4.safetensors
 # ── VAEs ──
 vae	minimax_h3_video_vae_fp16.safetensors	https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_fp16.safetensors
