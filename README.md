@@ -4,7 +4,7 @@
 
 [![Runpod](https://api.runpod.io/badge/huchukato/runpod-minimax-h3)](https://console.runpod.io/hub)
 
-A production-ready [Runpod Serverless](https://docs.runpod.io/serverless/overview) worker running **MiniMax H3** (Comfy-Org INT8 ConvRot) on ComfyUI — text/image/first-last-frame/reference-to-video **with audio**, multi-scene **storyboards via the Director**, turbo LoRAs, TensorRT RIFE + upscaling, wildcards and an uncensored Qwen3-VL enhancer. Built for [ForgeHub](https://github.com/huchukato/ForgeHub), but the endpoint speaks plain Runpod API.
+A production-ready [Runpod Serverless](https://docs.runpod.io/serverless/overview) worker running **MiniMax H3** (Comfy-Org INT8 ConvRot) on ComfyUI — text/image/first-last-frame/reference-to-video **with audio**, multi-scene **storyboards via the Director**, distilled turbo checkpoints, TensorRT RIFE + upscaling, wildcards and an uncensored Qwen3-VL enhancer. Built for [ForgeHub](https://github.com/huchukato/ForgeHub), but the endpoint speaks plain Runpod API.
 
 ## Deploy
 
@@ -33,9 +33,9 @@ A production-ready [Runpod Serverless](https://docs.runpod.io/serverless/overvie
 
 ## Model stack (auto-provisioned)
 
-- DiTs: Comfy-Org `minimax_h3_fl2va` INT8, `Minimax-h3_Singularity_ref2va` INT8 (T2V/I2V/R2V/V2V in one unet)
+- DiTs: `PRISM_DMAD_PDMD_int8` (Singularity×10Eros merge, R2VA/ref2va paths) + `Minimax-H3-Hybrid-DMAD-PDMD_int8` (FL2VA backbone + Ref2VA guidance, FL2VA/I2VA/T2VA) — both 8-step distilled, no external turbo LoRAs
 - Text encoder: `qwen3vl_32b_heretic_minimax_h3_nvfp4` (Momoking)
-- Turbo LoRAs: lightx2v fl2v/ref2v 8-step · Style LoRAs: `h3-realism-people` (fal), `h3_character_swap` (akatz)
+- Style LoRAs: `h3-realism-people` (fal), `h3_character_swap` (akatz), `mmh3-cinematic-lora-v2`
 - VAEs: video fp16 + audio fp32, `taeh3` preview · Face detailer: `face_yolov8m` + `sam_vit_b`
 - Enhancer LLM: Qwen3.5-9B Defiant-Fable NEO-MAX Q6_K GGUF + mmproj (also drives the Director's auto-Analyze/Enhance)
 
@@ -58,8 +58,7 @@ A production-ready [Runpod Serverless](https://docs.runpod.io/serverless/overvie
 ```
 
 - **Director Native**: `prompt` = one idea per line (each = a segment, `seconds` split evenly); `global_prompt` = style prose; `subject_description` optional (auto-Analyze when empty); `enhance` = per-segment QwenVL autoprompting (default true)
-- **Director Storyboard**: `prompt` = one idea (timestamps welcome); `images` = up to 3 storyboard frames; `vl_preset` = `MiniMax › Director Storyboard` / `Director Prose`
-- Classic: `config` presets (`native`/`native_turbo`/`r2va_singularity`/`r2va_singularity_turbo`/`10eros`/`10eros_turbo`) swap DiT/LoRA/steps/sampler/shift; `lora` = style LoRA on Singularity (`none`/`realism`/`char_swap`)
+- Classic: `config` presets — `prism_r2va_turbo` (R2VA/Singularity/Director-Native) or `hybrid_fl2va_r2va_turbo` (T2VA/I2VA/FL2VA) — swap DiT/sampler/shift; `lora` = style LoRA on Singularity/Director-Native (`none`/`realism`/`char_swap`/`cinematic`), `lora_strength` = its strength (0–2, default 1.0)
 - `video_size` — `auto` (follows the image/stills) or an explicit MMH3 native preset (`1344x768 (16:9)`, `1184x864 (4:3)`, …)
 - `upscale` / `rife` — TensorRT post chain · `"action": "health"` — status + workflow list, no generation
 
