@@ -187,3 +187,9 @@ manifest: 10Eros → Minimax-H3-Hybrid-DMAD-PDMD int8 (TenStrip repo renamed; hy
 mmh3: cinematic LoRA download + job.lora=cinematic + lora_strength param (0-2, default 1.0)
 Drop empty HF_TOKEN env var (warning noise; all manifest models are public)
 
+
+
+## v1.1.8
+
+RelayVSR x2 video upscale: new ForgeHub workflow (VHS_LoadVideo → RelayVSRConditioning/KSampler/VSRDecode → VHS_VideoCombine) + manifest entries for the x2 DiT (4.81GB) and Flash VAE
+handler: core LoadVideo input key is "file" (was "video" — VHS_LoadVideo keeps "video"); workflow sync honors meta.remote_file so one json can serve several endpoints

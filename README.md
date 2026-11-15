@@ -24,6 +24,7 @@ A production-ready [Runpod Serverless](https://docs.runpod.io/serverless/overvie
 | `MiniMaxH3-Turbo-R2VA.json` | Reference images → video + audio |
 | `MiniMaxH3-Singularity-R2VA.json` | Singularity fusion — up to 3 ref images + ref video |
 | `MiniMaxH3-Director-Native.json` | **Director**: character sheet + one idea per line → multi-scene storyboard with audio; the worker auto-analyzes the subject and expands each idea via the built-in QwenVL |
+| `RelayVSR-x2.json` | **Video x2 upscale**: RelayVSR 1-step DiT + Flash VAE — any input clip, exact 2x, audio passthrough |
 
 ## Requirements
 
@@ -60,6 +61,7 @@ A production-ready [Runpod Serverless](https://docs.runpod.io/serverless/overvie
 - **Director Native**: `prompt` = one idea per line (each = a segment, `seconds` split evenly); `global_prompt` = style prose; `subject_description` optional (auto-Analyze when empty); `enhance` = per-segment QwenVL autoprompting (default true)
 - Classic: `config` presets — `prism_r2va_turbo` (R2VA/Singularity/Director-Native) or `hybrid_fl2va_r2va_turbo` (T2VA/I2VA/FL2VA) — swap DiT/sampler/shift; `lora` = style LoRA on Singularity/Director-Native (`none`/`realism`/`char_swap`/`cinematic`), `lora_strength` = its strength (0–2, default 1.0)
 - `video_size` — `auto` (follows the image/stills) or an explicit MMH3 native preset (`1344x768 (16:9)`, `1184x864 (4:3)`, …)
+- **RelayVSR** (`RelayVSR-x2.json`): `video` = input clip (required); output is exactly 2x, frames/audio pass through — no prompt needed
 - `upscale` / `rife` — TensorRT post chain · `"action": "health"` — status + workflow list, no generation
 
 ## Custom nodes baked in

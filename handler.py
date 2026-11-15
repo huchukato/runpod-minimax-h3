@@ -122,7 +122,9 @@ def _sync_workflows():
                 continue
             meta = json.loads(urllib.request.urlopen(raw(mp), timeout=60).read())
             if meta.get("endpoint_name") == FH_ENDPOINT:
-                wanted.append(mp[:-len(".meta.json")] + ".json")
+                rf = str(meta.get("remote_file") or "").strip()
+                wanted.append(mp.rsplit("/", 1)[0] + "/" + rf if rf.endswith(".json")
+                              else mp[:-len(".meta.json")] + ".json")
         WF_SYNC_DIR.mkdir(parents=True, exist_ok=True)
         names = set()
         for wp in wanted:
@@ -368,7 +370,8 @@ def _patch(prompt, job):
                         inp.pop("LoadImagePixState", None)
                 img_idx += 1
         elif "LoadVideo" in ct and video_name:
-            inp["video"] = video_name
+            # core LoadVideo takes "file"; VHS_LoadVideo takes "video"
+            inp["file" if ct == "LoadVideo" else "video"] = video_name
         if ct == "MiniMaxH3DirectorCS" and director_nodes:
             # Native: inject the form-built timeline. Storyboard: leave the baked
             # one (its refs come from the socket). Either way the window follows
@@ -495,7 +498,7 @@ def _patch(prompt, job):
     # job carries no video (R2VA recipes have an optional ref_videos input).
     dead += [nid for nid, n in prompt.items()
              if "LoadVideo" in n.get("class_type", "")
-             and n.get("inputs", {}).get("video") != video_name]
+             and n.get("inputs", {}).get("file" if n.get("class_type") == "LoadVideo" else "video") != video_name]
     if dead:
         while dead:
             for nid in dead:

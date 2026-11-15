@@ -23,3 +23,6 @@ LLM/GGUF	mmproj-BF16.gguf	https://huggingface.co/DavidAU/Qwen3.5-9B-The-Defiant-
 # ── Prebuilt TensorRT engines ──
 tensorrt/rife	rife425_ensemble_False_scale_1_sim_fp16_large_1x3x720x720_1x3x1440x1440_1x3x1920x1920_10.15.1.29.trt	https://huggingface.co/huchukato/garage/resolve/main/tensorrt/rife/rife425_ensemble_False_scale_1x3x720x720_1x3x1920x1920_10.15.1.29.trt
 tensorrt/upscaler	2xLexicaRRDBNet_fp16_1x3x256x256_2x3x512x512_2x3x2048x2048_10.15.1.29.trt	https://huggingface.co/huchukato/garage/resolve/main/tensorrt/upscaler/2xLexicaRRDBNet_fp16_1x3x256x256_2x3x2048x2048_10.15.1.29.trt
+# ── RelayVSR x2 video upscale (1-step DiT + Flash VAE) ──
+diffusion_models	relayvsr_x2_lightx2v_int8_convrot.safetensors	https://huggingface.co/Comfy-Org/RelayVSR/resolve/main/diffusion_models/relayvsr_x2_lightx2v_int8_convrot.safetensors
+vae	relayvsr_flash_vae_x2_fp32.safetensors	https://huggingface.co/Comfy-Org/RelayVSR/resolve/main/vae/relayvsr_flash_vae_x2_fp32.safetensors
