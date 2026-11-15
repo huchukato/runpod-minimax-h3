@@ -180,3 +180,10 @@ drop baked workflows-api (ForgeHub sync is the only source)
 chore: update models-manifest.txt with correct LoRA style URLs
 chore: update hub.json to v1.1.6 with changelog and manifest cleanup
 
+
+## v1.1.7
+
+manifest: 10Eros → Minimax-H3-Hybrid-DMAD-PDMD int8 (TenStrip repo renamed; hybrid covers fl2va+ref2va in one checkpoint)
+mmh3: cinematic LoRA download + job.lora=cinematic + lora_strength param (0-2, default 1.0)
+Drop empty HF_TOKEN env var (warning noise; all manifest models are public)
+
