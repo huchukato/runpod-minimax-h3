@@ -421,14 +421,19 @@ def _patch(prompt, job):
                 sel = job.get("lora") or "none"
                 drop_lora = nid
                 if sel != "none":
-                    needle = {"realism": "realism", "char_swap": "character_swap"}.get(sel, sel)
+                    needle = {"realism": "realism", "char_swap": "character_swap",
+                              "cinematic": "cinematic"}.get(sel, sel)
                     found = _find_file("loras", needle)
                     if not found:
                         raise RuntimeError(f"Style LoRA '{sel}' not found on the volume")
                     inp["lora_name"] = found
+                    try:
+                        strength = min(max(float(job.get("lora_strength") or 1.0), 0.0), 2.0)
+                    except (TypeError, ValueError):
+                        strength = 1.0
                     for skey in ("strength_model", "strength_clip"):
                         if skey in inp:
-                            inp[skey] = 1.0
+                            inp[skey] = strength
             elif cfg is not None:
                 if cfg["lora"]:
                     found = _find_file("loras", cfg["lora"])

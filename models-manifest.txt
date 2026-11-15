@@ -13,6 +13,7 @@ vae	minimax_h3_audio_vae_fp32.safetensors	https://huggingface.co/Comfy-Org/MiniM
 # ── LoRA style ──
 loras	h3-realism-people-t2v-i2v-r2v.safetensors	https://huggingface.co/fal/MiniMax-H3-Realism-People-LoRA/resolve/main/h3-realism-people-t2v-i2v-r2v.safetensors
 loras	h3_character_swap_v1.5.safetensors	https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA/resolve/main/h3_character_swap_v1.5.safetensors
+loras	mmh3-cinematic-lora-v2.safetensors	https://huggingface.co/huchukato/garage/resolve/main/loras/mmh3/mmh3-cinematic-lora-v2.safetensors
 # ── Ultralytics models ──
 ultralytics/bbox	face_yolov8m.pt	https://huggingface.co/huchukato/garage/resolve/main/ultralytics/bbox/face_yolov8m.pt
 sams	sam_vit_b_01ec64.pth	https://huggingface.co/huchukato/garage/resolve/main/sams/sam_vit_b_01ec64.pth
