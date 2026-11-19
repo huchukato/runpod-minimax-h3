@@ -10,6 +10,9 @@ text_encoders	qwen3vl_32b_heretic_minimax_h3_nvfp4.safetensors	https://huggingfa
 # ── VAEs ──
 vae	minimax_h3_video_vae_fp16.safetensors	https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_video_vae_fp16.safetensors
 vae	minimax_h3_audio_vae_fp32.safetensors	https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/vae/minimax_h3_audio_vae_fp32.safetensors
+# ── H3-Image stills (T2I + Edit) ──
+diffusion_models	minimax_h3_image_pruned_int8_convrot.safetensors	https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/diffusion_models/minimax_h3_image_pruned_int8_convrot.safetensors
+vae	minimax_h3_image_vae_fp16.safetensors	https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/vae/minimax_h3_image_vae_fp16.safetensors
 # ── LoRA style ──
 loras	h3-realism-people-t2v-i2v-r2v.safetensors	https://huggingface.co/fal/MiniMax-H3-Realism-People-LoRA/resolve/main/h3-realism-people-t2v-i2v-r2v.safetensors
 loras	h3_character_swap_v1.5.safetensors	https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA/resolve/main/h3_character_swap_v1.5.safetensors

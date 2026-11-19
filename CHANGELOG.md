@@ -193,3 +193,10 @@ Drop empty HF_TOKEN env var (warning noise; all manifest models are public)
 
 RelayVSR x2 video upscale: new ForgeHub workflow (VHS_LoadVideo → RelayVSRConditioning/KSampler/VSRDecode → VHS_VideoCombine) + manifest entries for the x2 DiT (4.81GB) and Flash VAE
 handler: core LoadVideo input key is "file" (was "video" — VHS_LoadVideo keeps "video"); workflow sync honors meta.remote_file so one json can serve several endpoints
+
+
+## v1.1.9
+
+MiniMax H3-Image stills: T2I + Edit workflows exposed via ForgeHub (QwenVL_Unified enhancer presets "MiniMax › H3-Image T2I/Edit")
+manifest + pod provisioning: minimax_h3_image_pruned_int8_convrot DiT + minimax_h3_image_vae_fp16 VAE (Comfy-Org/MiniMax-H3-Image)
+handler: job.prompt now reaches PrimitiveStringMultiline nodes (H3-Image graphs feed QwenVL through it)

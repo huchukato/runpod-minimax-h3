@@ -392,6 +392,9 @@ def _patch(prompt, job):
         if director_tdata is None and job.get("prompt") is not None and ct == "WildcardProcessor":
             inp["text"] = job["prompt"]
             inp["populated_text"] = job["prompt"]
+        if director_tdata is None and job.get("prompt") is not None and ct == "PrimitiveStringMultiline" \
+                and "value" in inp and not isinstance(inp.get("value"), list):
+            inp["value"] = job["prompt"]
         if director_tdata is None and job.get("camera_tag") and "camera_tag" in inp:
             inp["camera_tag"] = job["camera_tag"]
         if director_tdata is None and job.get("vl_preset"):
