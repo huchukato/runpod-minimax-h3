@@ -195,6 +195,11 @@ RelayVSR x2 video upscale: new ForgeHub workflow (VHS_LoadVideo → RelayVSRCond
 handler: core LoadVideo input key is "file" (was "video" — VHS_LoadVideo keeps "video"); workflow sync honors meta.remote_file so one json can serve several endpoints
 
 
+## v1.1.10
+
+handler: workflow sync URL-encodes repo paths (filenames with spaces broke the whole sync)
+(retry of the Hub release — v1.1.9 test hit a worker init timeout)
+
 ## v1.1.9
 
 MiniMax H3-Image stills: T2I + Edit workflows exposed via ForgeHub (QwenVL_Unified enhancer presets "MiniMax › H3-Image T2I/Edit")
