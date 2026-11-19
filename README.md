@@ -21,8 +21,7 @@ A production-ready [Runpod Serverless](https://docs.runpod.io/serverless/overvie
 | `MiniMaxH3-Turbo-T2VA.json` | Text → video + audio |
 | `MiniMaxH3-Turbo-I2VA.json` | Image → video + audio |
 | `MiniMaxH3-Turbo-FL2VA.json` | First/last frame → video + audio |
-| `MiniMaxH3-Turbo-R2VA.json` | Reference images → video + audio |
-| `MiniMaxH3-Singularity-R2VA.json` | Singularity fusion — up to 3 ref images + ref video |
+| `MiniMaxH3-Singularity-R2VA.json` | Reference images → video + audio (Singularity fusion — up to 3 ref images + ref video) |
 | `MiniMaxH3-Director-Native.json` | **Director**: character sheet + one idea per line → multi-scene storyboard with audio; auto-analyzes subject + expands ideas via built-in QwenVL |
 | `MiniMaxH3 Image - Txt2Img.json` | **H3-Image T2I**: text → still (6-step CFG-1, QwenVL enhancer presets, wildcards, native res up to 16MP) |
 | `MiniMaxH3 Image - Edit.json` | **H3-Image Edit**: source image(s) + instruction → edited still |
